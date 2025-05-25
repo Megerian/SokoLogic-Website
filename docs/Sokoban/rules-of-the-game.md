@@ -15,7 +15,7 @@ The number of boxes matches the number of storage locations.
 The puzzle is solved when all boxes occupy the storage locations.
 
 An example Sokoban puzzle and how it looks like solving it:
-![Sokoban Gameplay Example](images/SokobanExample.gif)
+![Sokoban Gameplay Example](images/sokoban-puzzle-solving-example.gif)
 
 Each step of the player counts as a "move".
 Each push of a box counts as a "push".

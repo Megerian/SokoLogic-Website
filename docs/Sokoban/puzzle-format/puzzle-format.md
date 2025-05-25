@@ -26,7 +26,7 @@ It's important that the whole puzzle is surrounded by walls (`#`).
 
 This means, assuming all boxes are removed from the board, the player must not be able to get to the border of the puzzle. Hence, a puzzle like the one shown below can't be loaded by most Sokoban programs because the player can reach the right border (the puzzle is not "closed"):
 
-![example non closed level](images/puzzleFormat-Example_non_closed_level.png)
+![example non closed level](images/example-non-closed-level.png)
 
 ## Formats Not All Programs Support
 
@@ -38,7 +38,7 @@ Circular puzzles are puzzles that start in what would normally be the end positi
 
 Example puzzle:
 
-![example circular level](images/puzzleFormat-Example_circular_puzzle.png)
+![example circular level](images/example-circular-puzzle.png)
 
 The Sokoban program implementing this puzzle type must ensure that at least one push is made to report "solved" for such puzzles.
 
@@ -51,7 +51,7 @@ Some puzzles have walls, boxes, and goals outside the player's reachable area to
 
 An example is "Sasquatch 01 / Level 41":
 
-![level with outside elements](images/puzzleFormat-puzzle_with_outside_elements.png)
+![level with outside elements](images/puzzle-with-outside-elements.png)
 
 The boxes on the left side cannot be reached by the player; this entire area serves a decorative purpose. Some programs support loading and playing these puzzles. If the outside elements are not all boxes on goals, the behavior is unclear. Some programs refuse to load such puzzles since the number of goals and boxes does not match. However, other programs consider and count only the **reachable** boxes and goals, ignoring the others.
 
@@ -59,7 +59,7 @@ The boxes on the left side cannot be reached by the player; this entire area ser
 
 Some puzzles look better with interior empty rows. An example is the puzzle "Steaming Hot" by David Buchweitz:
 
-![example interior empty rows](images/puzzleFormat-Example_interior_empty_rows.png)
+![example interior empty rows](images/example-interior-empty-rows.png)
 
 > **Note:**
 > Since an empty line in the `.sok` format is used to separate puzzles, solutions, snapshots, etc., such interior empty rows cannot be written as a completely empty line.
@@ -93,7 +93,7 @@ Some websites and programs also allow puzzles that aren't completely surrounded 
 
 An example is the puzzle "No walls" created by Rincewind:
 
-![example interior no walls level](images/puzzleFormat-Example_interior_no_walls_level.png)
+![example interior no walls level](images/example-interior-no-walls-level.png)
 
 This puzzle type is supported by very few Sokoban implementations and is not standard. There are only a few puzzles of this type.
 
@@ -114,7 +114,7 @@ Some programs allow playing a puzzle in reverse mode. The puzzle is displayed wi
 Reverse solutions and snapshots must start with: `[]`.
 Hence, a valid reverse solution for this puzzle:
 
-![example reverse solution](images/puzzleFormat-Example_reverse_solution.png)
+![example reverse solution](images/example-reverse-solution.png)
 
 would be: `[]urLdrLdrLdrL`
 
@@ -124,7 +124,7 @@ Since the player may be in different areas at the end of the puzzle, the start p
 
 For instance, in this example puzzle:
 
-![example jump moves](images/puzzleFormat-Example_jump_moves.png)
+![example jump moves](images/example-jump-moves.png)
 
 the player starts at a goal. Since reverse mode starts with all boxes on a goal, the player would start "above" a box. Hence, the player must "jump" to any valid start position (a square without a wall and box).
 
