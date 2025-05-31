@@ -1,78 +1,108 @@
 # Deadlocks
 
-Due to the limitation of only being able to push a box, but never pull it, a level can become "deadlocked".
+Due to the limitation of only being able to push a box, but never pull it, a puzzle can become "deadlocked."
 
-This means that the level can't be solved, no matter what the user does. The only way to solve the level is to undo a move or restart the level.
+A deadlock occurs when the puzzle cannot be solved, regardless of what the player does. The only way to resolve this is to undo a push or restart the puzzle.
 
-An important insight for recognizing deadlocks is that not all deadlocks require all the boxes in the puzzle. A single box in the wrong position can create a deadlock, regardless of where other boxes are positioned in the puzzle.
+An important observation about deadlocks is that not all boxes in a puzzle need to be involved. A single box in the wrong position can create a deadlock, regardless of the positions of other boxes in the puzzle.
 
-Thus, it is possible to look for deadlock patterns consisting of only a few boxes to check if a particular game situation is deadlocked, which is much easier than having to consider all boxes.
+Therefore, it is possible to identify deadlock patterns involving only a few boxes, which is easier than considering all boxes in a puzzle.
 
 This article describes some common types of deadlocks.
 
-The player is represented by an arrow, a box by a sphere, and a goal by a small hole.
+In the illustrations below, the player is represented by an arrow, a box by a sphere, and a goal by a small hole.
 
-## Dead square deadlocks
+---
 
-Dead square deadlocks are squares in a level that immediately create a deadlock situation when pushing a box to them.
-See this example level:
+## Dead Square Deadlocks
 
+"Dead square deadlocks" occur when certain squares in a puzzle immediately cause a deadlock if a box is pushed to them.
+
+**Example**:  
 ![simpleDeadlockExample](images/simple-deadlock-example.png)
 
-The player can push the box to every direction. But pushing the box to a darker shaded square results in a deadlock. If the player pushed the box one square up, the box would still be pushable (to the left and right), but no matter what the player does, it won't be possible to push the box to the goal anymore.
-This type of deadlock is "simple", because it just needs one box to create it. Even if the level contained more boxes they all would be irrelevant regarding the deadlock situation. Furthermore simple deadlocks are static - that means the squares creating a simple deadlock are there at level start and during the whole game play. No matter how the boxes are pushed, a box on one of these squares will always result in a simple deadlock.
+In this example, the player can push the box in multiple directions. However, pushing the box onto a darker shaded square immediately results in a deadlock. For instance, if the player pushes the box one square upward, it may still be pushable (left and right), but the box can no longer be moved to the goal.
 
-## Freeze deadlocks
+This deadlock type is considered "simple" because it involves only a single box. Even if the puzzle contains additional boxes, they are irrelevant to this deadlock. Furthermore, simple deadlocks are static. The squares causing the deadlock exist from the start of the puzzle and throughout gameplay. A box on one of these squares will always result in a deadlock.
 
-Sometimes boxes become immoveable. If a box becomes immoveable while not being located on a goal the whole level is deadlocked. The box is "frozen" on that square and can never be pushed again!
+---
 
+## Freeze Deadlocks
+
+A "freeze deadlock" happens when a box becomes immovable and is not on a goal square. This renders solving the puzzle impossible, as the frozen box prevents progress.
+
+**Example**:  
 ![FreezeDeadlockExample](images/freeze-deadlock-example.png)
 
-Pushing the box above the player one square up results in a freeze deadlock. The box becomes immoveable without being located on a goal => deadlock.
-Every time a box gets immoveable on a square that isn't a goal square this type of deadlock occurs. Note: It needn't to be the pushed box that isn't located on a goal:
+Here, pushing the box above the player one square upward results in a freeze deadlock. The box cannot be moved further and is not located on a goal square.  
 
+This type of deadlock can occur anytime a box becomes immovable on a square that is not a goal.
+
+**Another Example**:  
 ![FreezeDeadlockExample2](images/freeze-deadlock-example-2.png)
 
-Here a push to the left results in a freeze deadlock although the pushed box is located on a goal after the push. The push immobilizes another box which immobilizes, ... finally a box is immobilized which isn't located on a goal.
+In this puzzle, pushing the box to the left creates a freeze deadlock. Although the pushed box reaches a goal, the push immobilizes another box, which eventually causes a box to be frozen in a non-goal position.
 
-## Corral deadlocks
+---
 
-A corral is an area the player can't reach.
+## Corral Deadlocks
 
+A "corral deadlock" occurs when a specific area becomes inaccessible to the player.
+
+**Example**:  
 ![CorralDeadlockExample](images/corral-deadlock-example.png)
 
-The right area (marked with little blue quadrats) isn't reachable for the player. Pushing the lower box to the right results in a situation that is deadlock. Even both boxes are still pushable none of them can reach a goal anymore. Programs like [Sokoban YASC](http://sourceforge.net/projects/sokobanyasc/) can recognize some of these corral deadlocks by checking if a box can be pushed out of the corral area (that is the area marked by the blue quadrats) or all boxes can be pushed to goals.
-Corral deadlocks can include all other type of deadlocks. In fact the corral area (the area the player can't reach) can be seen as an own little sublevel.
+In this puzzle, the right area (marked with small blue squares) becomes a corral—a region the player cannot reach. If the lower box is pushed to the right, the corral deadlock is formed. While both boxes remain pushable, neither can reach a goal.  
 
+Certain programs, like [Sokoban YASC](http://sourceforge.net/projects/sokobanyasc/), can detect corral deadlocks by determining whether boxes in a corral region can be pushed to goals.  
+
+**Expanded Example**:  
 ![CorralDeadlockExample2](images/corral-deadlock-example-2.png)
 
-In this level the player just has pushed the box one square down. This results in an area the player can't reach. Although it's possible to push one box out of the marked area this can only be done by creating another corral deadlock! Hence, the current situation is a deadlock.
+Here, pushing the box one square downward creates a corral deadlock. A box can technically be pushed out of the marked area, but doing so would create another corral deadlock. Thus, the puzzle remains unsolvable.
 
-## Closed diagonal deadlocks
+---
 
-Pushing the box to the left in this example level creates a 'closed diagonal deadlock':
+## Closed Diagonal Deadlocks
 
-![closedDiagonalDeadlockExample](images/closedDiagonalDeadlockExample.png)
+"Closed diagonal deadlocks" occur when diagonal moves create an unsolvable situation.
 
-This type of deadlock often occurs in "checkerboard levels" like [Sasquatch V-50](http://sokobano.de/results/display.php?set=sasquatch5&lvl=49).
-The diagonal may also contain some walls like in this example level:
+**Example**:  
+![closedDiagonalDeadlockExample](images/closed-diagonal-deadlock-example.png)
 
-![closedDiagonalDeadlockExample2](images/closedDiagonalDeadlockExample2.png)
+In this case, pushing the box to the left results in a closed diagonal deadlock. This type of deadlock is common in puzzles with checkerboard patterns, such as [Sasquatch V-50](http://sokobano.de/results/display.php?set=sasquatch5&lvl=49).
 
-## Bipartite deadlocks
-I call this type "bipartite deadlocks" because of the algorithm needed to detect them.
-Sometimes not every box can be pushed to every goal. Then it is important which box is pushed to which goal.
-See this example:
+**Variation Example**:  
+![closedDiagonalDeadlockExample2](images/closed-diagonal-deadlock-example-2.png)
 
+If walls are added in specific positions along the diagonal, the resulting closed diagonal deadlock still occurs.
+
+---
+
+## Bipartite Deadlocks
+
+"Bipartite deadlocks" arise when not every box can be pushed to every goal, making it critical to match specific boxes to specific goals.
+
+**Example**:  
 ![BipartiteDeadlockExample](images/bipartite-deadlock-example.png)
 
-Pushing the box to the right results in a bipartite deadlock. Although every box can be pushed to a goal after this push, it will be impossible to push all boxes to a goal at the same time.
+Pushing the box to the right creates a bipartite deadlock. Although all boxes remain pushable, it becomes impossible to push all the boxes to goals simultaneously.
 
-## Deadlocks due to frozen boxes
-Frozen boxes don't create a Freeze deadlock when being located on a goal. Nevertheless they may influence the reachable area of other boxes.
+---
 
+## Deadlocks Caused by Frozen Boxes
+
+While frozen boxes do not themselves create freeze deadlocks when placed on goals, their presence may still prevent other boxes from being pushed to goals.
+
+**Example**:  
 ![FrozenBoxDeadlockExample](images/frozen-box-deadlock-example.png)
 
-Pushing the box next to the player to the right results in a deadlock because the box gets frozen and therefore the other box can't be pushed to a goal anymore.
+In this scenario, pushing the box next to the player to the right freezes it in a position that blocks another box from reaching its goal. This results in a deadlock.
 
-There are a lot more types of deadlocks in the game of Sokoban. Often deadlocks are a combination of more than one deadlock type. Detecting a deadlock is an important task for humans as well as for computers in order to be able to solve a level. Programs like [Sokoban YASC](http://sourceforge.net/projects/sokobanyasc/) can help the user to avoid some of the described deadlocks. However, most of the deadlocks remain undetected.
+---
+
+## Detecting and Avoiding Deadlocks
+
+There are many other possible types of deadlocks in Sokoban, often involving combinations of deadlock patterns. Recognizing deadlocks is essential for both human players and automated solvers.
+
+Programs like [Sokoban YASC](http://sourceforge.net/projects/sokobanyasc/) can help players detect certain deadlocks. However, most deadlocks remain undetected by current tools, requiring careful planning and observation to avoid.

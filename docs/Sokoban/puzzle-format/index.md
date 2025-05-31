@@ -1,21 +1,22 @@
 # Sokoban Puzzle Format Details
 
-## Puzzle
+## Puzzle Representation
 
-The most commonly used format for representing a Sokoban puzzle is based on the following characters:
+A Sokoban puzzle is usually represented using specific characters for each element of the game:
 
-| Puzzle element        | Character  | ASCII Code |
+| Puzzle Element        | Character  | ASCII Code |
 | --------------------- | ---------- | ---------- |
 | Wall                  | `#`        | 0x23       |
 | Player                | `@`        | 0x40       |
-| Player on goal square | `+`        | 0x2b       |
+| Player on Goal Square | `+`        | 0x2b       |
 | Box                   | `$`        | 0x24       |
-| Box on goal square    | `*`        | 0x2a       |
-| Goal square           | `.`        | 0x2e       |
-| Floor                 | ` `(Space) | 0x20       |
+| Box on Goal Square    | `*`        | 0x2a       |
+| Goal Square           | `.`        | 0x2e       |
+| Floor                 | `(Space)`  | 0x20       |
 
-The simplest solvable puzzle looks like this:
+### Example: Simplest Solvable Puzzle
 
+The simplest possible solvable puzzle is represented as follows:
 ```
 #####
 #@$.#
@@ -118,7 +119,7 @@ Hence, a valid reverse solution for this puzzle:
 
 would be: `[]urLdrLdrLdrL`
 
-Note that in a reverse solution, the pulls must be written with capital letters.
+Note that in a reverse solution, the pulls ***must*** be written with capital letters.
 
 Since the player may be in different areas at the end of the puzzle, the start position in reverse mode is not known when reverse mode is used. It's therefore possible for the player to "jump" to the start position before the first pull is made.
 
@@ -137,7 +138,7 @@ It's also possible to save the player's moves even if they don't constitute a so
 
 ## Puzzle Collection
 
-Many authors publish several puzzles as a collection, for instance, "Sokoban Perfect." Usually, all puzzles contained in this collection are then referred to as "the Sokoban Perfect puzzles."
+Many authors publish several puzzles as a collection, for instance, the "Sokoban Perfect" collection. Usually, all puzzles contained in this collection are then referred to as "the Sokoban Perfect puzzles."
 
 A specific puzzle from this collection is specified by adding the number of the puzzle in that collection after the collection name. For instance, to refer to the 10th puzzle of the collection "Sokoban Perfect," one can write: "Sokoban Perfect #10" or simply "Sokoban Perfect 10." If the puzzles don't have their own titles, they are just numbered (1, 2, 3, ...). However, some authors also name their puzzles.
 
@@ -147,7 +148,7 @@ There exist various file formats for storing the data of a puzzle or puzzle coll
 
 Every file format stores the data differently. Some store all data in just one file, while others store different data in different files (for instance, solutions may be saved in extra files for every puzzle).
 
-The widely used `.sok` format is [described here](sok-format.md), including a detailed description of how to implement a program that can read the format.
+The widely used `.sok` format is [described here](http://sokobano.de/wiki/index.php?title=Sok_format), including a detailed description of how to implement a program that can read the format.
 
 ## Run Length Encoding (RLE)
 
@@ -193,6 +194,9 @@ For example, this puzzle:
 Should be RLE'd this way:
 **`3#`**`|#.3#|#*$-#|#--@#|5#`
 
+> **Note:**
+> The RLE format is not used anymore, since the nowadays widely used `.sok` format is compact and efficient enough.
+
 ## Exchange of Sokoban Puzzles in E-mails
 
 Many e-mail servers strip empty spaces and multiple spaces. To ensure puzzles can be imported properly by email recipients, here are some suggestions:
@@ -203,4 +207,3 @@ Replace all spaces with hyphens (`-`) (preferred) or underscores (`_`).
 ## Sok Format Description
 
 There is a dedicated page explaining the widely used [Sok-format](sok-format.md) and its implementation in computer programs.
-

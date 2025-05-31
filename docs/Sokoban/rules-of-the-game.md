@@ -1,23 +1,32 @@
 ## Rules of the Game
 
-The warehouse is depicted as a grid of squares, each one representing either a floor section or a wall section.
+The warehouse is represented as a grid of squares, where each square is either a **floor** or a **wall**.
 
-Some floor squares contain boxes and some are marked as storage locations.
+Certain floor squares may hold **boxes**, while others are marked as **storage locations**.
 
-The player, often represented as a worker character, can move one square at a time horizontally or vertically onto empty floor squares, but cannot pass through walls or boxes.
+The player, often depicted as a worker, can move one square at a time horizontally or vertically onto empty floor squares. The player cannot move through walls or boxes.
 
-To move a box, the player walks up to it and pushes it to the square beyond.
+To move a box, the player must walk up to it and push it onto the square beyond.
 
-Boxes cannot be pushed to squares with walls or other boxes, and they cannot be pulled.
+**Important rules for moving boxes:**
 
-The number of boxes matches the number of storage locations.
+- Boxes cannot be pushed onto squares occupied by walls or other boxes.
+- Boxes cannot be pulled, only pushed.
 
-The puzzle is solved when all boxes occupy the storage locations.
+The number of boxes on the grid matches the number of storage locations.
 
-An example Sokoban puzzle and how it looks like solving it:
+The puzzle is completed when all boxes are correctly placed on their storage locations.
+
+### Gameplay Metrics
+
+Each movement of the player counts as a **"move"**.
+Each time the player pushes a box, it counts as a **"push"**.
+
+Some Sokoban programs track the number of moves and pushes.
+The challenge often lies in solving the puzzle with the fewest moves or pushes required.
+
+### Example
+
+Below is an example of a Sokoban puzzle and how it progresses as the player solves it:
+
 ![Sokoban Gameplay Example](images/sokoban-puzzle-solving-example.gif)
-
-Each step of the player counts as a "move".
-Each push of a box counts as a "push".
-
-Some programs display the number of moves and pushes, and the challenge is to complete the level with fewer moves or pushes.
