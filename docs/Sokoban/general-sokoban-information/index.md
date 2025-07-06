@@ -6,7 +6,7 @@ The parity of the number of moves required to solve a Sokoban puzzle (i.e., whet
 
 ![Move Parity Example](images/move-parity-example-1.png)
 
-In this puzzle, the move parity is always **even** when the level is solved, regardless of how the player moves, because the player must always finish at the position left of the box.
+In this puzzle, the move parity is always **even** when the level is solved, regardless of how the player moves, because the player must always finish at the position left of the goal.
 
 This phenomenon stems from the fact that the player can only move up, down, left, or right:
 
