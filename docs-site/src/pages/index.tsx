@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { Box, Cpu, FileText } from 'lucide-react';
 
 export default function Home(): JSX.Element {
@@ -21,10 +22,16 @@ export default function Home(): JSX.Element {
               Knowledge & documentation hub for Sokoban puzzle generation, solving algorithms, and formats.
             </p>
             <div className="my-3">
-              <Link className="button button--secondary button--lg mr-2" to="/docs/puzzle-generators/intro">
+              <Link
+                className="button button--secondary button--lg mr-2"
+                to={useBaseUrl('docs/puzzle-generators/intro')}
+              >
                 🧭 Get Started
               </Link>
-              <Link className="button button--link button--lg" to="https://github.com/Megerian/SokoLogic">
+              <Link
+                className="button button--link button--lg"
+                to="https://github.com/Megerian/SokoLogic"
+              >
                 ⭐ View on GitHub
               </Link>
             </div>
@@ -32,7 +39,7 @@ export default function Home(): JSX.Element {
 
           <div className="mt-6 md:mt-0 md:w-1/2 flex justify-center">
             <img
-              src="/img/sokoban-puzzle-solving-example.gif"
+              src={useBaseUrl('img/sokoban-puzzle-solving-example.gif')}
               alt="Sokoban Example"
               className="rounded-lg shadow-md max-h-72"
             />
@@ -49,7 +56,10 @@ export default function Home(): JSX.Element {
             <p className="mb-3">
               Learn how Sokoban puzzles are generated — algorithms, randomization, and reproducibility techniques.
             </p>
-            <Link className="button button--primary button--sm" to="/docs/puzzle-generators/intro">
+            <Link
+              className="button button--primary button--sm"
+              to={useBaseUrl('docs/puzzle-generators/intro')}
+            >
               Explore Generators
             </Link>
           </div>
@@ -60,7 +70,10 @@ export default function Home(): JSX.Element {
             <p className="mb-3">
               Explore Sokoban solving strategies and algorithms, including search techniques and optimizations.
             </p>
-            <Link className="button button--primary button--sm" to="/docs/puzzle-solver/solver-basics">
+            <Link
+              className="button button--primary button--sm"
+              to={useBaseUrl('docs/puzzle-solver/solver-basics')}
+            >
               Explore Solver
             </Link>
           </div>
@@ -71,7 +84,10 @@ export default function Home(): JSX.Element {
             <p className="mb-3">
               Learn about Sokoban file formats, puzzle structure, and historical context.
             </p>
-            <Link className="button button--primary button--sm" to="/docs/Sokoban/format">
+            <Link
+              className="button button--primary button--sm"
+              to={useBaseUrl('docs/Sokoban/puzzle-format')}
+            >
               Explore Format
             </Link>
           </div>
