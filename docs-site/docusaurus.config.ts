@@ -36,7 +36,7 @@ path: 'docs',
 routeBasePath: '/docs',
 sidebarPath: require.resolve('./sidebars.ts'),
           editUrl:
-            'https://github.com/Megerian/SokoLogic-Website/edit/main/docs/',
+            'https://github.com/Megerian/SokoLogic-Website/edit/main/docs-site/docs/',
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
