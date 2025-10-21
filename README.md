@@ -5,6 +5,8 @@
 This project is an implementation of the classic Sokoban puzzle game.
 It is built using the Kotlin programming language and utilizes Jetpack Compose for the user interface.
 
+!!! **This website is still work in progress** !!!
+
 ## Features
 
 * *Classic Sokoban gameplay*
