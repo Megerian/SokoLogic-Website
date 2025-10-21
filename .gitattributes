@@ -1,0 +1,31 @@
+# --- Einheitliche Zeilenenden ---
+# Automatisch alle Textdateien mit LF speichern, auch wenn unter Windows entwickelt wird
+* text=auto eol=lf
+
+# --- Markdown & Dokumentationsdateien ---
+*.md text
+*.mdx text
+*.yml text
+*.yaml text
+*.json text
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.css text
+
+# --- Bilder / Binärdateien ---
+# Diese Dateien sollen nicht verändert werden (keine Zeilenenden-Konvertierung)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.zip binary
+*.pdf binary
+
+# --- Lokale Konfigurationsdateien ---
+# Editor/IDE Einstellungen nicht normalisieren (optional)
+.idea/* -text
+.vscode/* -text

@@ -1,4 +1,6 @@
-## Rules of the Game
+---
+title: Rules of the Game
+---
 
 The warehouse is represented as a grid of squares, where each square is either a **floor** or a **wall**.
 
@@ -17,7 +19,7 @@ The number of boxes on the grid matches the number of storage locations.
 
 The puzzle is completed when all boxes are correctly placed on their storage locations.
 
-### Gameplay Metrics
+### Metrics
 
 Each movement of the player counts as a **"move"**.
 Each time the player pushes a box, it counts as a **"push"**.
@@ -29,4 +31,4 @@ The challenge often lies in solving the puzzle with the fewest moves or pushes r
 
 Below is an example of a Sokoban puzzle and how it progresses as the player solves it:
 
-![Sokoban Gameplay Example](images/sokoban-puzzle-solving-example.gif)
+![Sokoban  Example](/img/sokoban/sokoban-puzzle-solving-example.gif)

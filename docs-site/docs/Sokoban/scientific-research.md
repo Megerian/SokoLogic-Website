@@ -1,3 +1,7 @@
+---
+title: Computational Complexity of Sokoban
+---
+
 Sokoban has been extensively studied in the field of computational complexity.
 
 The computational problem of solving Sokoban puzzles was initially proven to be **NP-hard**. Subsequent research demonstrated that it is also **PSPACE-complete**.

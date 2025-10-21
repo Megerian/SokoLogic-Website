@@ -1,6 +1,10 @@
+---
+title: Sokoban Overview
+---
+
 Sokoban is a puzzle video game in which the player pushes boxes around in a warehouse, trying to get them to storage locations.
 
-![Sokoban Gameplay Example](images/sokoban-puzzle-solving-example.gif)
+![Sokoban Gameplay Example](/img/sokoban/sokoban-puzzle-solving-example.gif)
 
 The game was designed in 1981 by Hiroyuki Imabayashi, and first published in December 1982. The original game of SOKOBAN was written by Hiroyuki Imabayashi.
 
