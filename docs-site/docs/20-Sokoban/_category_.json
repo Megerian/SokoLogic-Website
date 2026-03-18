@@ -1,6 +1,6 @@
 {
-  "label": "Puzzle Solver",
-  "position": 2,
+  "label": "Sokoban",
+  "position": 20,
   "collapsible": true,
   "collapsed": true
 }

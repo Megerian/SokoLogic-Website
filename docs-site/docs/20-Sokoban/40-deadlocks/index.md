@@ -54,12 +54,12 @@ A "corral deadlock" occurs when a specific area becomes inaccessible to the play
 
 In this puzzle, the right area (marked with small blue squares) becomes a corral—a region the player cannot reach. If the lower box is pushed to the right, the corral deadlock is formed. While both boxes remain pushable, neither can reach a goal.
 
-Certain programs, like [Sokoban YASC](http://sourceforge.net/projects/sokobanyasc/), can detect corral deadlocks by determining whether boxes in a corral region can be pushed to goals.
+Certain programs, like SokoLogic, can detect corral deadlocks by determining whether boxes in a corral region can be pushed to goals.
 
 **Expanded Example**:  
 ![CorralDeadlockExample2](/img/sokoban/deadlocks/corral-deadlock-example-2.png)
 
-Here, pushing the box one square downward creates a corral deadlock. A box can technically be pushed out of the marked area, but doing so would create another corral deadlock. Thus, the puzzle remains unsolvable.
+Here, pushing the box one square downward created a corral deadlock. A box can technically be pushed out of the marked area, but doing so would create another corral deadlock. Thus, the puzzle remains unsolvable.
 
 ---
 
@@ -105,4 +105,4 @@ In this scenario, pushing the box next to the player to the right freezes it in 
 
 There are many other possible types of deadlocks in Sokoban, often involving combinations of deadlock patterns. Recognizing deadlocks is essential for both human players and automated solvers.
 
-Programs like [Sokoban YASC](http://sourceforge.net/projects/sokobanyasc/) can help players detect certain deadlocks. However, most deadlocks remain undetected by current tools, requiring careful planning and observation to avoid.
+Programs like SokoLogic can help players detect certain deadlocks. However, most deadlocks remain undetected by current tools, requiring careful planning and observation to avoid.

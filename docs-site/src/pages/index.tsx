@@ -19,12 +19,12 @@ export default function Home(): JSX.Element {
               SokoLogic
             </Heading>
             <p className="hero__subtitle">
-              Knowledge & documentation hub for Sokoban puzzle generation, solving algorithms, and formats.
+              Knowledge & documentation hub for SokoLogic and Sokoban in general.
             </p>
             <div className="my-3">
               <Link
                 className="button button--secondary button--lg mr-2"
-                to={useBaseUrl('docs/puzzle-generators/intro')}
+                to={useBaseUrl('docs/Sokoban/')}
               >
                 🧭 Get Started
               </Link>
@@ -37,13 +37,6 @@ export default function Home(): JSX.Element {
             </div>
           </div>
 
-          <div className="mt-6 md:mt-0 md:w-1/2 flex justify-center">
-            <img
-              src={useBaseUrl('img/sokoban-puzzle-solving-example.gif')}
-              alt="Sokoban Example"
-              className="rounded-lg shadow-md max-h-72"
-            />
-          </div>
         </div>
       </header>
 

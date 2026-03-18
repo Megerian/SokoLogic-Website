@@ -1,5 +1,6 @@
 ---
 title: Rules of the Game
+sidebar_position: 10
 ---
 
 The warehouse is represented as a grid of squares, where each square is either a **floor** or a **wall**.
