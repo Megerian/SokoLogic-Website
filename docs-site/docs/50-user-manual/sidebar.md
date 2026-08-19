@@ -89,6 +89,7 @@ Each snapshot shows:
 - **Move count** — how many moves in you were when the snapshot was taken
 - **Push count** — how many pushes at that point
 - **Notes** (optional) — a comment you added to the snapshot
+- **Play-direction badge** (optional) — a single character marking whether the snapshot was recorded playing forward (pushing boxes) or in [reverse play](main-window.md#reverse-play-pull-boxes) (pulling boxes); configured in [Settings: Sidebar](settings.md#sidebar)
 
 **Actions:**
 - **Click a snapshot** — jump to that exact board state and move count. Your full move history is preserved; you can undo/redo from that position.
@@ -105,11 +106,13 @@ Each snapshot shows:
 - They are useful for exploring multiple solution strategies without restarting from scratch.
 - Unlike solutions, snapshots are not saved to the database; they're a temporary analysis tool.
 - You can have many snapshots; the list scrolls if it exceeds the sidebar height.
+- A snapshot recorded in the other play direction than the one you're currently in shows no live hover preview; double-click it to load it (which switches your play direction to match) or right-click for options.
 
 **Related Features**
 - [Settings: Sidebar](settings.md#sidebar) — configure snapshot list appearance
 - [Solutions Panel](#solutions-panel) — for persistent, saved solutions
 - [Menu: Moves > Undo/Redo](menus.md#moves-menu) — step through moves without snapshots
+- [Reverse Play](main-window.md#reverse-play-pull-boxes) — playing a puzzle backward, which snapshots can be tagged with
 
 ---
 
@@ -159,7 +162,7 @@ Each macro shows:
 | Toggle Snapshots panel | <kbd>D</kbd> | Show/hide the Snapshots tab |
 | Toggle Macros panel | <kbd>M</kbd> | Show/hide the Macros tab |
 
-You can customize these shortcuts in [Settings > Keybindings](keyboard-shortcuts.md#customizing-a-shortcut).
+You can customize these shortcuts in [Settings > Controls](keyboard-shortcuts.md#customizing-a-shortcut).
 
 ---
 

@@ -65,6 +65,7 @@ The menu bar at the top of the window provides access to all major features and 
 | **Jump to move…** | — | Open a dialog to jump to a specific move number (1–N). |
 | **Jump to push…** | — | Jump to a specific box push number instead of move number. |
 | **Simplify board** | *(unassigned)* | Remove unnecessary walls and frozen boxes to tighten the puzzle structure (see [Settings: Gameplay > Board Simplification](settings.md#gameplay)). |
+| **Reverse play (pull boxes)** | *(unassigned)* | Checkbox that switches between playing the puzzle forward (pushing boxes) and backward (pulling boxes toward their starting positions). See [Reverse Play](main-window.md#reverse-play-pull-boxes). |
 | **Copy to clipboard** | <kbd>Ctrl</kbd>+<kbd>M</kbd> | Copy your current move sequence as LURD text. |
 | **Copy after current position** | *(unassigned)* | Copy only the moves from your current position onward. |
 | **Copy moves range to clipboard…** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Open a dialog to copy a specific range of moves (e.g., moves 5–15). |
@@ -77,9 +78,11 @@ The menu bar at the top of the window provides access to all major features and 
 - LURD stands for Left, Up, Right, Down — the standard Sokoban move notation.
 - Single-step vs. full-push undo is a setting; by default, undo undoes one full box-push sequence (all player movement + the push itself).
 - "Simplify board" is a one-time operation; it modifies the puzzle structure for cleaner visualization.
+- "Reverse play" stays checked while active — it's a mode, not a one-time action. See [Reverse Play](main-window.md#reverse-play-pull-boxes) for what changes on the board while it's on.
 
 **Related Features**
 - [Main Window > History Controls](main-window.md#history-controls) — toolbar buttons for undo/redo/replay
+- [Main Window > Reverse Play](main-window.md#reverse-play-pull-boxes) — full documentation of playing a puzzle backward
 - [Settings: Gameplay](settings.md#gameplay) — configure undo behavior and board simplification
 - [Keyboard Shortcuts](keyboard-shortcuts.md) — customize all move-related keybindings
 
@@ -183,7 +186,7 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 
 **Related Features**
 - [Settings](settings.md) — complete documentation of all settings categories
-- [Keyboard Shortcuts](keyboard-shortcuts.md) — customize keybindings in the Keybindings settings category
+- [Keyboard Shortcuts](keyboard-shortcuts.md) — customize keybindings in the Controls settings category
 
 ---
 
@@ -216,7 +219,7 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 
 Most menu items show their keyboard shortcut next to the item name. These shortcuts are customizable:
 - **Platform-aware shortcuts** use Ctrl on Windows/Linux and Cmd on macOS (shown as the platform-specific symbol).
-- Visit [Settings > Keybindings](keyboard-shortcuts.md#customizing-a-shortcut) to rebind any shortcut.
+- Visit [Settings > Controls](keyboard-shortcuts.md#customizing-a-shortcut) to rebind any shortcut.
 - Hover over a menu item to see its full keybinding description if the text is truncated.
 
 ## Related Features

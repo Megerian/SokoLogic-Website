@@ -223,6 +223,38 @@ These buttons enable/disable based on your position in move history. Grayed-out 
 
 ---
 
+## Reverse Play (Pull Boxes)
+
+**Purpose:** Play a puzzle backward — pulling boxes away from their goals, back toward their starting positions — instead of pushing them forward.
+
+**Prerequisites:** A puzzle is loaded, and it must be solvable in reverse; not every puzzle can be played backward.
+
+**Usage**
+- Check **Reverse play (pull boxes)** in the Moves menu (or press its keyboard shortcut, once you've assigned one — it has none by default) to switch into reverse play.
+- Switching rebuilds the board for pulling: boxes move to where the goals were, and the goals move to where the boxes started.
+- The first time you switch, the status bar prompts you to click a free square to choose where the player starts pulling from.
+- From then on, walking the player into a box from the far side pulls it one tile toward you, instead of pushing it away.
+- A highlighted tile on the board marks the position the player needs to return to for the attempt to count as solved.
+- Uncheck the same menu item (or press its shortcut again) to switch back to forward play.
+
+**Result:** As you pull boxes, they move back toward their original starting tiles. The puzzle counts as solved once every box is back on its starting tile **and** the player has returned to the highlighted target tile. If all boxes are placed but the player can't path back to that tile, the status bar shows "All boxes are placed - but the player can't get back to the start position."
+
+**Notes:**
+- Not every puzzle can be played backward. Switching on one that can't shows "This puzzle can't be played backwards." and reverse play doesn't activate.
+- Switching direction keeps each direction's move history separate — nothing is lost switching back and forth, and undo/redo work normally within whichever direction is active.
+- A puzzle solved in reverse is recorded as an ordinary forward solution in the Solutions list, so saved solutions always read as pushes regardless of which direction you played them in.
+- Snapshots, however, remember which direction they were taken in and are tagged with a badge for it — see [Snapshots List](#snapshots-list).
+- Loading a snapshot or solution automatically switches your play direction to match the one it was recorded in.
+- Several features are unavailable while reverse play is active and show "Not available while playing in reverse." if you try to use them: board simplification, the click-triggered actions configured under [Mouse Bindings](keyboard-shortcuts.md#mouse-bindings) (wall click/double-click, background click, right click), and pasting a move sequence from the clipboard. Deadlock detection is also turned off while reverse play is active.
+
+**Related Features**
+- [Menu: Moves](menus.md#moves-menu) — the "Reverse play" checkbox that toggles this mode
+- [Snapshots List](#snapshots-list) — snapshots are tagged with the play direction they were recorded in
+- [Keyboard Shortcuts](keyboard-shortcuts.md) — assign a keyboard shortcut to toggle reverse play
+- [Settings: Sidebar](settings.md#sidebar) — configure the push-mode/pull-mode snapshot badge characters
+
+---
+
 ## Status Bar (Bottom Bar)
 
 **Purpose:** Displays status messages and zoom controls for the board.
@@ -323,3 +355,4 @@ The sidebar on the left contains three tabbed panels:
 - [Sidebar](sidebar.md) — solutions, snapshots, and macros in detail
 - [Puzzle Browser](puzzle-browser.md) — search and filter puzzles in loaded collections
 - [Editor](editor.md) — create and modify puzzle levels
+- [Reverse Play](#reverse-play-pull-boxes) — play a puzzle backward, pulling boxes instead of pushing them

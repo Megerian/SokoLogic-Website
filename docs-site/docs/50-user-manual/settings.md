@@ -195,14 +195,15 @@ None.
 - **Go-through boxes** — let auto-walk pathfinding pass through boxes when a free path exists
 
 ### On-Board Hints & Highlighting
-- **Push box to right-clicked position** — right-click a free tile to mark it as a push target and highlight every box that can be pushed there; click the target again to push the best box, or click a highlighted box to exclude it from the attempt
 - **Show reachable box positions** — when you click a box, highlight every goal tile it could still reach
 - **Show staircase push targets** — highlight diagonal box chains and their valid staircase push destinations
 - **Show line push targets** — highlight gapped straight-line box chains and their valid line push destinations
 - **Show minimum solution length** — calculate and display a lower bound on the number of pushes needed to solve the puzzle
 - **Show dead squares** — highlight tiles where a box could never reach a goal
 - **Show frozen goal net boxes** — highlight boxes that started the puzzle already on a goal as part of a permanently frozen goal net
-- **Unmoved/unvisited highlight colors** — color scheme (*Outline* or *Classic*) for the never-moved-boxes / never-visited-floors highlight, which you toggle by double-clicking a wall tile
+- **Unmoved/unvisited highlight colors** — color scheme (*Outline* or *Classic*) for the never-moved-boxes / never-visited-floors highlight
+
+What triggers these on-board highlights (a wall click, a wall double-click, a background click, or a right click) is configured separately under [Controls > Mouse bindings](keyboard-shortcuts.md#mouse-bindings) — by default, a right click marks a push target the way "Push box to right-clicked position" used to, and a wall double-click toggles the unmoved/unvisited highlight.
 
 ### Deadlock Detection
 - **Quick presets** — **All** (detect all deadlock types), **Fast** (detect only the most common), **None** (disable all detection)
@@ -245,6 +246,7 @@ None of these settings are marked experimental in the application; all are stabl
 - **Solution metrics** — show *All metrics* or *Moves/pushes only* for each solution.
 - **Solutions list** — show *All solutions*, *Only best solutions*, or *Only best N solutions* (with an adjustable count) by default; hidden solutions can always be revealed again.
 - **Show titles as a second line** — show a solution's or snapshot's title below its metrics instead of only on hover.
+- **Push-mode snapshot badge** / **Pull-mode snapshot badge** — single character shown next to a snapshot in the Snapshots list marking whether it was recorded playing forward (pushing boxes) or in [reverse play](main-window.md#reverse-play-pull-boxes) (pulling boxes). Leave either field blank to show no badge for that mode. Pull-mode defaults to "R"; push-mode defaults to blank.
 
 **Result**
 Changes apply immediately to the sidebar lists.
@@ -253,7 +255,7 @@ Changes apply immediately to the sidebar lists.
 None.
 
 **Related Features**
-[Sidebar Panels](sidebar.md), [Gameplay](#gameplay)
+[Sidebar Panels](sidebar.md), [Gameplay](#gameplay), [Reverse Play](main-window.md#reverse-play-pull-boxes)
 
 ---
 
@@ -314,9 +316,9 @@ None.
 
 ---
 
-## Keyboard Shortcuts (Keybindings)
+## Controls
 
-The **Keybindings** category allows you to customize keyboard shortcuts for all major actions. This is documented in detail on the [Keyboard Shortcuts](keyboard-shortcuts.md) page.
+The **Controls** category lets you customize keyboard shortcuts for all major actions, and configure what single-click, double-click, and right-click do on wall tiles and the background. This is documented in detail on the [Keyboard Shortcuts](keyboard-shortcuts.md) page.
 
 ---
 
