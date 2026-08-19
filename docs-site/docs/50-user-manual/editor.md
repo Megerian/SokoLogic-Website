@@ -20,7 +20,7 @@ The Level Editor is a full-featured tool for creating and modifying Sokoban puzz
 - **From main menu:** Click **Tools > Editor**.
 
 **Result**
-The editor opens in a new window showing a blank or loaded board, with the toolbar at top, status bar at bottom, and a statistics sidebar on the right.
+The editor opens in a new window showing a blank or loaded board, with the toolbar at top, status bar at bottom, and the tool/statistics sidebar on the left.
 
 **Notes**
 Opening the editor from an active puzzle preserves your move history — you can return to play mode without restarting.
@@ -34,10 +34,10 @@ Opening the editor from an active puzzle preserves your move history — you can
 
 The editor consists of several parts:
 
-- **Toolbar (Top)** — buttons for New, Play, Cancel, Save, Undo/Redo, Copy, Paste, Zoom controls
+- **Toolbar (Top)** — buttons for New, Copy, Paste, Save, Undo/Redo, the transform (rotate/flip) buttons, and the positioning-mode toggle
 - **Central Board Area** — the editable puzzle board
-- **Sidebar (Right)** — displays board statistics (size, box/goal counts, etc.)
-- **Status Bar (Bottom)** — shows current tool, mouse coordinates, zoom level, board margins
+- **Sidebar (Left)** — the tool palette, level title/author fields, board statistics, and the **Play**/**Cancel** buttons
+- **Status Bar (Bottom)** — shows current tool, validation status, margin and zoom controls, board size, and mouse coordinates
 
 ---
 
@@ -124,7 +124,7 @@ Every box must have a matching goal for the puzzle to be valid.
   - Empty tile → Player starts here (@)
   - Goal tile → Player starts on goal (+)
 - Only one player can exist — clicking a new tile moves the player from the old position to the new one.
-- When painting an area with Shift+drag, the player is placed at the bottom-right corner of the painted region.
+- When painting an area with Shift+drag, the player is placed at the tile where you release the mouse button (not automatically a corner of the painted region).
 
 **Result:** The player appears on the board at the specified tile.
 
@@ -146,6 +146,7 @@ Every puzzle must have exactly one player. The puzzle is only valid if the playe
   - **Delete** the selection (right-click menu)
   - **Fill** the selection with a specific tile type (right-click menu)
   - **Replace** all occurrences of one tile type within the selection (right-click menu)
+  - **Rotate/Mirror Selection** — right-click menu submenu that rotates or mirrors only the selected tiles in place (rotate clockwise, rotate counter-clockwise, rotate 180°, flip horizontally, flip vertically)
   - **Move** the selection (<kbd>Ctrl</kbd>+arrow keys to shift the selected region within the board)
 - **Keyboard modifiers** while selecting:
   - **Shift** — add to existing selection
@@ -159,19 +160,20 @@ The marquee tool is the only tool that doesn't paint — it only selects.
 
 ---
 
-## Toolbar & Controls
+## Top Toolbar
 
 | Button | Action |
 |--------|--------|
 | **New** | Create a new blank puzzle (opens a size/preset dialog) |
-| **Play** | Save your edits and return to play mode to test the puzzle |
-| **Cancel** | Discard edits and close the editor without saving |
+| **Copy** | Copy selected region or entire board to clipboard |
+| **Paste** | Paste clipboard content onto the board |
 | **Save** | Export the puzzle as a `.sok` file to disk |
 | **Undo** | Revert the last edit (Max 100 undo steps) |
 | **Redo** | Reapply a reverted edit |
-| **Copy** | Copy selected region or entire board to clipboard |
-| **Paste** | Paste clipboard content onto the board |
-| **Zoom ±** | Zoom in/out; click the percentage to reset to 100% |
+| **Rotate clockwise / counter-clockwise, Flip horizontally / vertically** | Transform the board or, with a selection active and the modifier key held, just the selection — see [Transformations](#transformations) |
+| **Positioning mode toggle** | Switch between Auto-Center and Free Positioning — see [Board Positioning Modes](#board-positioning-modes) |
+
+The **Play** and **Cancel** buttons are not in the top toolbar — they sit at the bottom of the left sidebar (see [Sidebar](#sidebar)). Zoom, margin, and board-size controls are in the status bar at the bottom (see [Status Bar](#status-bar)).
 
 ---
 
@@ -189,7 +191,7 @@ The marquee tool is the only tool that doesn't paint — it only selects.
 
 ## Board Positioning Modes
 
-The editor offers two positioning modes (toggled via the **Auto-center** button in the toolbar or sidebar):
+The editor offers two positioning modes (toggled via the positioning button in the top toolbar):
 
 ### Auto-Center Mode (Default)
 
@@ -204,7 +206,7 @@ The editor offers two positioning modes (toggled via the **Auto-center** button 
 - The **+** and **−** buttons adjust the left/top margin independently to create uneven spacing.
 
 **Switching modes:**
-- Click the **Auto-Center** button in the toolbar or sidebar to toggle.
+- Click the positioning button in the top toolbar to toggle; its icon and tooltip reflect the current mode.
 - When switching from free to auto-center mode, the board reflows to minimum margins with uniform centering.
 
 ---
@@ -258,16 +260,18 @@ The editor offers two positioning modes (toggled via the **Auto-center** button 
 
 ## Transformations
 
-Transform the entire board without editing individual tiles:
+The toolbar's transform buttons rotate or flip the level:
 
-| Transformation | Shortcut | Effect |
-|---|---|---|
-| **Rotate clockwise** | <kbd>Shift</kbd>+<kbd>→</kbd> | Rotate the board 90° clockwise |
-| **Rotate counter-clockwise** | <kbd>Shift</kbd>+<kbd>←</kbd> | Rotate 90° counter-clockwise |
-| **Flip horizontally** | <kbd>Shift</kbd>+<kbd>↑</kbd> | Mirror left-to-right |
-| **Flip vertically** | *(unassigned)* | Mirror top-to-bottom |
+| Button | Effect |
+|---|---|
+| **Rotate clockwise** | Rotate 90° clockwise |
+| **Rotate counter-clockwise** | Rotate 90° counter-clockwise |
+| **Flip horizontally** | Mirror left-to-right |
+| **Flip vertically** | Mirror top-to-bottom |
 
-Access via the **View** menu (these are the same shortcuts used in play mode — see [Menu: View](menus.md#view-menu)).
+**By default these transform the entire board.** If you have an active **Marquee** selection, hold <kbd>Ctrl</kbd> (<kbd>Cmd</kbd> on macOS) while clicking a transform button to rotate or flip only the selected tiles instead of the whole board.
+
+For selection-only transforms you can also right-click the selection and choose **Rotate/Mirror Selection**, which additionally offers a **Rotate 180°** option not present in the toolbar.
 
 ---
 
@@ -287,32 +291,29 @@ A new board is created with the specified dimensions. If **Create outer wall fra
 
 ---
 
-## Sidebar Statistics
+## Sidebar
 
-The **Statistics** panel on the right shows real-time counts:
+The sidebar is docked on the **left** side of the editor window and contains, top to bottom:
 
-- **Width / Height** — current board dimensions (in tiles).
-- **Boxes** — number of boxes placed.
-- **Goals** — number of goal tiles.
-- **Boxes on goals** — number of boxes that are already on a goal (contributes to the **Boxes on Goals** count).
-- **Walls** — total wall tiles.
-- **Floors** — total walkable tiles (empty spaces).
-
-**Positioning mode indicator:**
-- **Auto-Center** button shows the current mode; click to toggle.
-- Tooltip explains the current mode and how to switch.
+- **Title / Author fields** — editable text fields for the level's metadata, saved with the puzzle.
+- **Tool palette** — the six tools described under [Tools](#tools), each showing its shortcut key; click a tool to select it (an alternative to the number/letter keys or scroll-wheel switching).
+- **Statistics** — real-time counts of **Walls**, **Floors**, **Boxes**, and **Goals** currently on the board.
+- **Play / Cancel buttons** — at the bottom of the sidebar:
+  - **Play** saves your edits and returns to play mode to test the puzzle (disabled until the puzzle passes [validation](#validation)).
+  - **Cancel** discards edits and closes the editor without saving.
 
 ---
 
 ## Status Bar
 
-The **Status Bar** at the bottom displays:
+The **Status Bar** at the bottom shows, left to right:
 
 - **Current tool** name and instructions (e.g., "Draw walls (Shift: draw line/rect)").
+- **Validation status** — the same icon and message described under [Validation](#validation).
+- **Margin controls** (`− Margin: _ +`) — click **−**/**+** or scroll the mouse wheel over this area to adjust the margin; click the margin value to toggle between Auto-Center and Free Positioning mode.
+- **Zoom controls** (`− Zoom: __% +`) — click **−**/**+** to step the zoom level, or click the percentage to reset to 100%.
+- **Board size** (Size: WxH) — click to open the [Board Size Dialog](#board-size-dialog).
 - **Mouse coordinates** (X: ___, Y: ___) showing the tile under the pointer.
-- **Board size** (Size: WxH).
-- **Board margin** (Margin: _).
-- **Zoom level** (Zoom: __%).
 
 ---
 
@@ -389,6 +390,7 @@ There is no default shortcut to save the level — use the **Save** button.
 - **Symmetry:** Use copy/paste to mirror designs for symmetric levels.
 - **Margins:** The margin space around the puzzle is part of the playable area — the player can walk there. Use walls to block unwanted access.
 - **Zoom:** Use Ctrl+scroll to zoom in for precision editing, or click the zoom percentage to reset to 100%.
+- **Panning:** When the board is larger than the window, hold <kbd>Z</kbd> and drag (or drag with the middle mouse button) to move the view.
 - **Coordinates:** Hover over a tile to see its X,Y position in the status bar; useful for referencing puzzle layout.
 - **Undo history:** Limited to 100 edits per session; plan accordingly for very large changes.
 - **Testing:** Always test your puzzle in play mode before distributing it to ensure it's solvable and behaves as intended.

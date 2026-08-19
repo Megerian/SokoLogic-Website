@@ -17,6 +17,7 @@ onBrokenLinks: 'throw',
 markdown: {
 hooks: {
 onBrokenMarkdownLinks: 'warn',
+onBrokenMarkdownImages: 'warn',
 },
 },
 
@@ -58,10 +59,10 @@ sidebarPath: require.resolve('./sidebars.ts'),
       logo: {
         alt: 'SokoLogic Logo',
         src: '/img/favicon.png',
-        href: '/', // führt zur Startseite (src/pages/index.tsx)
+        href: '/', // leads to start page (src/pages/index.tsx)
       },
       items: [
-        { to: '/docs/intro', label: 'Documentation', position: 'left' },
+        { to: '/docs/introduction-to-SokoLogic/', label: 'Documentation', position: 'left' },
         { href: 'https://github.com/Megerian/SokoLogic-Website', label: 'GitHub', position: 'right' },
       ],
     },

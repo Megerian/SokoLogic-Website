@@ -5,7 +5,7 @@ sidebar_label: Overview
 ---
 
 Sokoban is a single-agent puzzle game in which a player pushes boxes in a maze onto goal squares.  
-Despite its simple rules, Sokoban is computationally very demanding: it is NP-hard and even PSPACE-complete, and real levels can require hundreds of pushes and have branching factors well over 100. :contentReference[oaicite:0]{index=0}
+Despite its simple rules, Sokoban is computationally very demanding: it is NP-hard and even PSPACE-complete, and real levels can require hundreds of pushes and have branching factors well over 100.
 
 This makes Sokoban an excellent playground for search algorithms, heuristics, and pruning techniques.
 
