@@ -76,18 +76,30 @@ The filter applies on top of the search query.
 
 Click the **Advanced Search** button to open a dedicated panel with a much larger set of filters than the basic search field, organized into collapsible sections:
 
-**Search Target Scope** — search either the **Current Collection** (already loaded in memory) or **Local Folders**: add one or more folders from disk, then click **Scan Folders** to index every puzzle file inside them before searching.
+**Search Target Scope** — search either the **Current Collection** (already loaded in memory) or **Local Folders**: use **Add Folder** to pick one or more folders from disk, then click **Scan Folders** to index every puzzle file inside them before searching. **Re-Scan Folders** picks up changes made on disk since. If any file could not be read, a notice reports how many, with the details on hover.
 
 - **General Metadata** — Title (supports either fuzzy matching or `*`/`?` wildcards) and Author.
 - **Dimensions & Structural Counts** — range filters (e.g. `12`, `10-15`, `>=12`) for Boxes, Goals, Walls, Floors, Boxes on goal, Width, and Height.
-- **Solution Metrics** — range filters for Moves, Pushes, and Pushing sessions; filter by who created the solution (**User**, **Solver**, or **Optimizer**); filter by LetsLogic upload status; search for a specific LURD substring within saved solutions.
+- **Solution Metrics** — range filters for Moves, Pushes, Box lines, Box changes, Pushing sessions, and Player lines; filter by who created the solution (**User**, **Solver**, or **Optimizer**); filter by LetsLogic upload status; search for a specific LURD substring within saved solutions.
 - **Patterns & Duplicates** — three mutually exclusive modes:
   - **Exact board** — paste a full board layout to find an identical match.
   - **Sub-pattern** — paste a partial pattern (space = any tile) to find it anywhere on the board.
-  - **Duplicates** — find puzzles that are the same or similar to each other (or to the currently playing puzzle), using either a fast raw-board comparison, a thorough normalized comparison, or a percentage-based similarity comparison that lets you choose which layers (boxes/goals/walls) count toward the match and set a minimum match threshold.
+  - **Duplicates** — find puzzles that are the same or similar to each other. **Target Scope** chooses between **All Duplicates** (every group in the searched set) and **Current Puzzle** (only puzzles matching the one you are playing).
   - An additional toggle lets duplicate/pattern searches also match rotated or mirrored orientations of the board.
 
-**Result:** The grid updates to show only puzzles matching the search/filter criteria. For duplicate searches, results are grouped by duplicate group instead of shown as a flat list.
+**Duplicate comparison modes**
+
+| Mode | What it compares |
+|---|---|
+| **Raw board (fast)** | The board text as stored, so only genuinely identical layouts match. |
+| **Normalized (thorough)** | A canonical form of the board, so layouts that differ only in padding or orientation still match. |
+| **Similarity (%)** | A per-tile score. **Compare** chooses which layers count (**Boxes**, **Goals**, **Walls**), and **Minimum match** sets the threshold a puzzle must reach to appear. |
+
+Similarity mode needs a puzzle open in play mode to compare against; without one the panel says so instead of searching. Each result carries its score as a `% match` label.
+
+When two boards have different dimensions, the score covers the whole area spanned by both of them, not just their overlap. Tiles that lie beyond the smaller board count as agreeing wherever the larger board is empty there too. So a small puzzle contained inside a larger, mostly empty one scores high, while the same puzzle inside a densely built board scores low. If you raise the threshold and get fewer hits than you expect, that is the part to keep in mind.
+
+**Result:** The grid updates to show only puzzles matching the search/filter criteria. For duplicate searches, results are grouped by duplicate group instead of shown as a flat list. A long scan or search shows its progress and can be stopped with **Cancel Search**.
 
 ## Notes
 

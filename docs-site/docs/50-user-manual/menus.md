@@ -64,8 +64,10 @@ The menu bar at the top of the window provides access to all major features and 
 | **Redo all** | <kbd>End</kbd> | Replay all moves in sequence without animation. |
 | **Jump to move…** | — | Open a dialog to jump to a specific move number (1–N). |
 | **Jump to push…** | — | Jump to a specific box push number instead of move number. |
+| **Find Next Suboptimal Push** | <kbd>N</kbd> | Jump forward to the next push in your move history that could have been done better. |
+| **Reverse play (pull boxes)** | <kbd>Ctrl</kbd>+<kbd>R</kbd> | Checkbox that switches between playing the puzzle forward (pushing boxes) and backward (pulling boxes toward their starting positions). See [Reverse Play](main-window.md#reverse-play-pull-boxes). |
+| **Double push mode** | <kbd>Ctrl</kbd>+<kbd>D</kbd> | Checkbox that makes the forward and backward halves of a puzzle work toward each other. See [Double Push Mode](#double-push-mode) below. |
 | **Simplify board** | *(unassigned)* | Remove unnecessary walls and frozen boxes to tighten the puzzle structure (see [Settings: Gameplay > Board Simplification](settings.md#gameplay)). |
-| **Reverse play (pull boxes)** | *(unassigned)* | Checkbox that switches between playing the puzzle forward (pushing boxes) and backward (pulling boxes toward their starting positions). See [Reverse Play](main-window.md#reverse-play-pull-boxes). |
 | **Copy to clipboard** | <kbd>Ctrl</kbd>+<kbd>M</kbd> | Copy your current move sequence as LURD text. |
 | **Copy after current position** | *(unassigned)* | Copy only the moves from your current position onward. |
 | **Copy moves range to clipboard…** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Open a dialog to copy a specific range of moves (e.g., moves 5–15). |
@@ -78,7 +80,25 @@ The menu bar at the top of the window provides access to all major features and 
 - LURD stands for Left, Up, Right, Down — the standard Sokoban move notation.
 - Single-step vs. full-push undo is a setting; by default, undo undoes one full box-push sequence (all player movement + the push itself).
 - "Simplify board" is a one-time operation; it modifies the puzzle structure for cleaner visualization.
-- "Reverse play" stays checked while active — it's a mode, not a one-time action. See [Reverse Play](main-window.md#reverse-play-pull-boxes) for what changes on the board while it's on.
+- "Reverse play" and "Double push mode" stay checked while active — they're modes, not one-time actions. See [Reverse Play](main-window.md#reverse-play-pull-boxes) for what changes on the board while reverse play is on.
+
+### Double Push Mode
+
+**Purpose:** Solve a puzzle from both ends at once, pushing from the start and pulling from the finish until the two halves meet.
+
+**Prerequisites:** A puzzle is loaded. The mode works together with **Reverse play**, which is how you switch between the two halves.
+
+**Usage**
+- Switch the mode on with **Moves > Double push mode** or <kbd>Ctrl</kbd>+<kbd>D</kbd>.
+- Work the puzzle forward as usual, then switch sides with **Reverse play** (<kbd>Ctrl</kbd>+<kbd>R</kbd>) and pull boxes from the other end.
+- Switch back and forth as often as you like.
+
+**Result**
+Each time you switch sides, the side you arrive at takes the box positions you just left behind as its new targets. The two halves therefore move toward each other instead of running as two unrelated attempts. The move and push counters show the combined total of both sides rather than only the side you are currently on.
+
+**Notes**
+- The puzzle counts as solved only once the player can actually get back to the square the other side left off at. If every box is placed but the player is walled in, the app tells you so instead of accepting the solution.
+- Solutions are not auto-saved while the mode is active.
 
 **Related Features**
 - [Main Window > History Controls](main-window.md#history-controls) — toolbar buttons for undo/redo/replay
@@ -197,17 +217,18 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 **Prerequisites:** None — always available.
 
 **Usage**
+- Click **Keyboard Shortcuts** to open a cheat sheet listing every shortcut currently in effect, including any you have rebound.
 - Click **About SokoLogic** to open a dialog showing:
   - Application version number
   - Copyright and author information
   - License (GPLv3)
   - Links to the official website
 
-**Result:** The About dialog displays and can be dismissed by clicking OK.
+**Result:** The chosen window opens. The About dialog is dismissed by clicking OK.
 
 **Notes:**
 - The About dialog is modal and blocks other interactions until closed.
-- No in-app help content is available from this menu; refer to the [user manual](/) for detailed feature documentation.
+- The shortcut cheat sheet reflects your current bindings, so it stays correct after you customize them under [Settings > Controls](keyboard-shortcuts.md#customizing-a-shortcut).
 
 **Related Features**
 - [Main Window](main-window.md) — overview of the primary UI

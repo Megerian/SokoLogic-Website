@@ -34,7 +34,7 @@ Opening the editor from an active puzzle preserves your move history — you can
 
 The editor consists of several parts:
 
-- **Toolbar (Top)** — buttons for New, Copy, Paste, Save, Undo/Redo, the transform (rotate/flip) buttons, and the positioning-mode toggle
+- **Toolbar (Top)** — buttons for New Puzzle, Copy, Paste, Save puzzle collection, Undo/Redo, the transform (rotate/flip) buttons, and the positioning-mode toggle
 - **Central Board Area** — the editable puzzle board
 - **Sidebar (Left)** — the tool palette, level title/author fields, board statistics, and the **Play**/**Cancel** buttons
 - **Status Bar (Bottom)** — shows current tool, validation status, margin and zoom controls, board size, and mouse coordinates
@@ -164,10 +164,10 @@ The marquee tool is the only tool that doesn't paint — it only selects.
 
 | Button | Action |
 |--------|--------|
-| **New** | Create a new blank puzzle (opens a size/preset dialog) |
+| **New Puzzle** | Choose a board size or preset (opens the **Board Size & Presets** dialog) |
 | **Copy** | Copy selected region or entire board to clipboard |
 | **Paste** | Paste clipboard content onto the board |
-| **Save** | Export the puzzle as a `.sok` file to disk |
+| **Save puzzle collection** | Export the puzzle as a `.sok` file to disk |
 | **Undo** | Revert the last edit (Max 100 undo steps) |
 | **Redo** | Reapply a reverted edit |
 | **Rotate clockwise / counter-clockwise, Flip horizontally / vertically** | Transform the board or, with a selection active and the modifier key held, just the selection — see [Transformations](#transformations) |
@@ -181,11 +181,13 @@ The **Play** and **Cancel** buttons are not in the top toolbar — they sit at t
 
 ### Using Presets
 
-1. Click **New**.
+1. Click **New Puzzle**.
 2. Choose a preset size (e.g., 10×10, 15×15) from the **Presets** list, or enter **Width** and **Height** manually.
 3. Check **Create outer wall frame** to automatically draw walls around the border (recommended to simplify level design).
 4. Click **Apply**.
 5. A new blank board appears; start placing elements.
+
+If the board you are working on already has something painted on it, choosing a new size does **not** wipe it. The existing layout is resized into the new dimensions instead, so you can enlarge or shrink a puzzle you are half-way through without losing it. Only a board you have not drawn on yet is replaced outright.
 
 ---
 
@@ -201,12 +203,13 @@ The editor offers two positioning modes (toggled via the positioning button in t
 
 ### Free Positioning Mode
 
-- The board stays in place; you use **Ctrl + arrow keys** to shift it around the workspace.
+- The board keeps whatever position you give it; you use **Ctrl + arrow keys** to shift it around the workspace.
 - Useful for designing asymmetric levels or when you need to draw in a specific area.
-- The **+** and **−** buttons adjust the left/top margin independently to create uneven spacing.
+- The **+** and **−** buttons widen or narrow the blank space on **all four sides by one tile at a time**. Because every side changes by the same amount, the board keeps the off-center position you gave it, and pressing **+** and then **−** leaves the layout exactly as it was.
 
 **Switching modes:**
 - Click the positioning button in the top toolbar to toggle; its icon and tooltip reflect the current mode.
+- Pressing **Ctrl + arrow keys** while auto-center is active switches to free positioning automatically, so you can start shifting the board without toggling first.
 - When switching from free to auto-center mode, the board reflows to minimum margins with uniform centering.
 
 ---
@@ -277,9 +280,11 @@ For selection-only transforms you can also right-click the selection and choose 
 
 ## Board Size Dialog
 
+The dialog is titled **Board Size & Presets**.
+
 **When to use:**
-- Creating a new puzzle (click **New** button).
-- Manually adjusting an existing puzzle's canvas size.
+- Creating a new puzzle (click the **New Puzzle** button).
+- Manually adjusting an existing puzzle's canvas size (click the size readout in the status bar).
 
 **Options:**
 - **Width / Height** — enter custom dimensions in tiles.
@@ -287,7 +292,28 @@ For selection-only transforms you can also right-click the selection and choose 
 - **Create outer wall frame** — automatically draw walls around the border.
 
 **Result:**
-A new board is created with the specified dimensions. If **Create outer wall frame** is checked, walls surround the outer edge, leaving the interior empty for design.
+A board of the chosen dimensions appears. If **Create outer wall frame** is checked, walls surround the outer edge, leaving the interior empty for design. An untouched board is replaced; a board you have already drawn on is resized with its content kept. Either way the change goes on the undo stack, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> takes you back.
+
+---
+
+## Leaving the Editor
+
+**Purpose:** Return to play mode, either keeping your work or throwing it away.
+
+**Prerequisites:** The editor is open.
+
+**Usage**
+- **Play** (bottom of the sidebar) hands the puzzle to play mode for testing. It stays disabled until the puzzle passes [validation](#validation).
+- **Cancel** (bottom of the sidebar) leaves without keeping the edits.
+
+**Result**
+If you have made no edits, **Cancel** closes the editor immediately. If you have, a **Discard changes?** dialog appears first and warns that leaving now throws the unsaved edits away and cannot be undone. Confirm to leave, or dismiss it to keep editing.
+
+**Notes**
+While that dialog is open, the editor's keyboard shortcuts are inactive, so a stray <kbd>Delete</kbd> or <kbd>Ctrl</kbd>+<kbd>Z</kbd> cannot change the board behind it.
+
+**Related Features**
+[Main Window](main-window.md)
 
 ---
 
@@ -321,14 +347,15 @@ The **Status Bar** at the bottom shows, left to right:
 
 As you design, the editor validates the board in real-time. A validation panel appears with one of these messages:
 
-| Status | Meaning | Fix |
+| Message | Meaning | Fix |
 |--------|---------|-----|
-| ✓ **Valid** | The puzzle is playable. | (None needed) |
-| ⚠ **Not fully enclosed** | The player can walk to the board's edge (a warning, not an error). | Surround the playable area with walls. |
-| ✗ **No player** | The puzzle has no player. | Place a player (tool 4). |
-| ✗ **No boxes** | No boxes are placed. | Add at least one box (tool 2). |
-| ✗ **No goals** | No goal tiles exist. | Add at least one goal (tool 3). |
-| ✗ **Box/goal mismatch** | The number of boxes does not match the number of goals. | Balance them (e.g., 3 boxes → 3 goals). |
+| ✓ **Puzzle layout is valid** | The puzzle is playable. | (None needed) |
+| ⚠ **Puzzle is not fully enclosed by walls - player can reach edge** | The player can walk to the board's edge. This is a warning, not an error, and does not block **Play**. | Surround the playable area with walls. |
+| ✗ **No player placed** | The puzzle has no player. | Place a player (tool 4). |
+| ✗ **No boxes placed** | No boxes are placed. | Add at least one box (tool 2). |
+| ✗ **Box and goal counts do not match** | The number of boxes does not match the number of goals. This also covers having no goals at all. | Balance them (e.g., 3 boxes → 3 goals). |
+| ✗ **The player position is invalid.** | The player is not on a square it could legally stand on. | Move the player onto an open floor or goal tile. |
+| ✗ **The puzzle is too big.** | The board exceeds the maximum size the app supports. | Reduce the width or height via the size dialog. |
 
 ---
 
@@ -349,11 +376,12 @@ As you design, the editor validates the board in real-time. A validation panel a
 
 ### Save to Disk
 
-Click **Save**:
+Click **Save puzzle collection**:
 - A file browser opens.
 - Enter a filename (default: level title).
 - Choose a location on disk.
 - The puzzle is saved as a `.sok` file (plain text, standard Sokoban format).
+- A confirmation appears naming the file it was written to.
 
 ### Export to Play Mode
 
@@ -376,12 +404,15 @@ Click **Play**:
 | <kbd>Ctrl</kbd>+<kbd>X</kbd> | Cut selection |
 | <kbd>Ctrl</kbd>+<kbd>V</kbd> | Paste |
 | <kbd>Ctrl</kbd>+<kbd>A</kbd> | Select all |
-| <kbd>Ctrl</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd>/<kbd>←</kbd>/<kbd>→</kbd> | Shift board position (free positioning mode) |
+| <kbd>Delete</kbd> | Clear the selected tiles |
+| <kbd>Esc</kbd> | Cancel the drag or selection currently in progress |
+| <kbd>Ctrl</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd>/<kbd>←</kbd>/<kbd>→</kbd> | Shift board position (switches to free positioning if auto-center is on) |
 | <kbd>+</kbd> / <kbd>−</kbd> | Increase/decrease margin |
 | Scroll wheel | Switch tool (hold <kbd>Ctrl</kbd> and scroll to zoom instead) |
 | <kbd>Shift</kbd>+drag | Draw straight line or rectangle with current tool |
+| <kbd>Z</kbd> or <kbd>Space</kbd> + drag | Pan the view when the board is larger than the window |
 
-There is no default shortcut to save the level — use the **Save** button.
+There is no default shortcut to save the level — use the **Save puzzle collection** button.
 
 ---
 
@@ -390,7 +421,7 @@ There is no default shortcut to save the level — use the **Save** button.
 - **Symmetry:** Use copy/paste to mirror designs for symmetric levels.
 - **Margins:** The margin space around the puzzle is part of the playable area — the player can walk there. Use walls to block unwanted access.
 - **Zoom:** Use Ctrl+scroll to zoom in for precision editing, or click the zoom percentage to reset to 100%.
-- **Panning:** When the board is larger than the window, hold <kbd>Z</kbd> and drag (or drag with the middle mouse button) to move the view.
+- **Panning:** When the board is larger than the window, hold <kbd>Z</kbd> or <kbd>Space</kbd> and drag (or drag with the middle mouse button) to move the view.
 - **Coordinates:** Hover over a tile to see its X,Y position in the status bar; useful for referencing puzzle layout.
 - **Undo history:** Limited to 100 edits per session; plan accordingly for very large changes.
 - **Testing:** Always test your puzzle in play mode before distributing it to ensure it's solvable and behaves as intended.

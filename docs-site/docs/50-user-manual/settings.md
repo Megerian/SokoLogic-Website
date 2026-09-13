@@ -183,27 +183,49 @@ None.
 
 ## Gameplay
 
-**Purpose:** Configure movement/pathfinding behavior, on-board hints, deadlock detection, and the puzzle-solved celebration.
+**Purpose:** Configure movement and pathfinding behavior, on-board hints and their colors, deadlock detection, board simplification, and the puzzle-solved celebration.
 
 **Prerequisites:** The Settings window must be open.
 
 **Usage**
 
-### Movement & Pathfinding
-- **Box pathfinding priority** — when you click a box to walk to it and push it, choose whether the game prefers *Fewest pushes* or *Fewest moves* for that walk
-- **Single step undo/redo** — step back or forward single player movements instead of full box-push sessions
-- **Go-through boxes** — let auto-walk pathfinding pass through boxes when a free path exists
+### Movement & Hints
 
-### On-Board Hints & Highlighting
-- **Show reachable box positions** — when you click a box, highlight every goal tile it could still reach
-- **Show staircase push targets** — highlight diagonal box chains and their valid staircase push destinations
-- **Show line push targets** — highlight gapped straight-line box chains and their valid line push destinations
+The first group of the category carries no heading of its own and holds the everyday play options:
+
 - **Show minimum solution length** — calculate and display a lower bound on the number of pushes needed to solve the puzzle
+- **Show line push targets** — highlight gapped straight-line box chains and their valid line push destinations
+- **Go-through boxes** — let auto-walk pathfinding pass through boxes when a free path exists
 - **Show dead squares** — highlight tiles where a box could never reach a goal
-- **Show frozen goal net boxes** — highlight boxes that started the puzzle already on a goal as part of a permanently frozen goal net
-- **Unmoved/unvisited highlight colors** — color scheme (*Outline* or *Classic*) for the never-moved-boxes / never-visited-floors highlight
+- **Instant** — jump the player to the clicked tile in one step instead of walking there
+- **Show direction changes** — while **Instant** is on, briefly show the turns the player would have made, so the route stays readable
+- **Automatically optimize intermediate moves** — shorten the walking moves between two pushes without changing the pushes themselves
 
-What triggers these on-board highlights (a wall click, a wall double-click, a background click, or a right click) is configured separately under [Controls > Mouse bindings](keyboard-shortcuts.md#mouse-bindings) — by default, a right click marks a push target the way "Push box to right-clicked position" used to, and a wall double-click toggles the unmoved/unvisited highlight.
+### Gameplay Features
+
+- **Box pathfinding priority** — when you click a box to walk to it and push it, choose whether the game prefers **Fewest pushes** or **Fewest moves** for that walk
+- **Unmoved/unvisited highlight colors** — color scheme for the never-moved-boxes / never-visited-floors highlight: **Outline (default)** or **Classic (colored)**
+- **Show reachable box positions** — when you click a box, highlight every tile it could still be pushed to. Switching it on reveals **Reachable position marker colors**, either **Neutral (default)** or **Accent (colored)**, each with its own **Fill color** and **Border color**
+- **Show staircase push targets** — highlight diagonal box chains and their valid staircase push destinations, with its own **Fill color** and **Border color**
+- **Show frozen goal net boxes** — highlight boxes that started the puzzle already on a goal as part of a permanently frozen goal net, with its own **Fill color** and **Border color**
+- **Undo/redo granularity** — how much ground one undo or redo step covers:
+
+| Setting | One step covers |
+|---|---|
+| **Combined movement (whole box-push run)** | The whole run of pushes your last action produced. |
+| **Push** | A single push. |
+| **Move** | A single player movement, whether or not it pushed a box. |
+
+### Board Highlight Colors
+
+Color pickers for the overlays the board draws during play:
+
+- **Push target fill color** and **Push target border color**
+- **Excluded box marker color**
+- **Backward play target fill color** and **Backward play target border color** — used by [Reverse Play](main-window.md)
+- **Pushable box fill color** and **Pushable box border color**
+
+What triggers the on-board highlights (a wall click, a wall double-click, a background click, or a right click) is configured separately under [Controls > Mouse bindings](keyboard-shortcuts.md#mouse-bindings) — by default, a right click marks a push target the way "Push box to right-clicked position" used to, and a wall double-click toggles the unmoved/unvisited highlight.
 
 ### Deadlock Detection
 - **Quick presets** — **All** (detect all deadlock types), **Fast** (detect only the most common), **None** (disable all detection)
@@ -214,13 +236,15 @@ What triggers these on-board highlights (a wall click, a wall double-click, a ba
   - **Unsolvable rooms** ([corral deadlocks](../20-Sokoban/40-deadlocks/index.md#corral-deadlocks))
   - **Impossible box/goal matchings** ([bipartite deadlocks](../20-Sokoban/40-deadlocks/index.md#bipartite-deadlocks))
   - **Closed diagonal deadlocks** ([details](../20-Sokoban/40-deadlocks/index.md#closed-diagonal-deadlocks))
+  - **Locked-up rooms** — a part of the board that boxes can no longer be pushed out of
+  - **Positions that cannot be unwound** — positions the boxes can no longer be worked back out of
+
+### Puzzle Solved Celebration
+- **Player/box pop animation**, **Goal glow effect**, **Victory sound**, **Highlighted status text**, and **Play skin animations** — each can be toggled independently to control what happens when you solve a puzzle
 
 ### Board Simplification
 - **Convert unmovable boxes to walls** — when simplifying the board, replace boxes that can never move again with walls
 - **Crop board to active area** — when simplifying the board, remove outer walls that aren't part of the puzzle's reachable area
-
-### Puzzle Solved Celebration
-- **Player/box pop animation**, **Goal glow effect**, **Victory sound**, **Highlighted status text**, and **Play skin animations** — each can be toggled independently to control what happens when you solve a puzzle
 
 **Result**
 Changes apply immediately; deadlock-detection changes re-evaluate the current board's deadlock highlighting right away.

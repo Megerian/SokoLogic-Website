@@ -42,8 +42,10 @@ None.
 | Redo | Insert |
 | Redo all | End |
 | Restart puzzle | Home |
+| Find Next Suboptimal Push | N |
 | Simplify board | *(unassigned)* |
-| Reverse play (pull boxes) | *(unassigned)* |
+| Reverse play (pull boxes) | Ctrl+R |
+| Double push mode | Ctrl+D |
 | Replay | R |
 | Copy to clipboard | Ctrl+M |
 | Copy moves after current position | *(unassigned)* |
@@ -54,10 +56,10 @@ None.
 Pressing a shortcut immediately triggers the corresponding action, exactly as if it had been chosen from the **Moves** menu.
 
 **Notes**
-"Copy moves after current position" has no default shortcut; assign one under [Customizing a shortcut](#customizing-a-shortcut) if desired. "Reverse play (pull boxes)" also has no default shortcut.
+"Copy moves after current position" and "Simplify board" have no default shortcut; assign one under [Customizing a shortcut](#customizing-a-shortcut) if desired. "Reverse play" and "Double push mode" stay checked while active rather than firing once — see [Double Push Mode](menus.md#double-push-mode) for what the combination does.
 
 **Related Features**
-[Customizing a shortcut](#customizing-a-shortcut), [Reverse Play](main-window.md#reverse-play-pull-boxes)
+[Customizing a shortcut](#customizing-a-shortcut), [Reverse Play](main-window.md#reverse-play-pull-boxes), [Double Push Mode](menus.md#double-push-mode)
 
 ## Default shortcuts — Sidebars & Display
 
@@ -81,12 +83,13 @@ None.
 | Rotate clockwise | Shift+→ |
 | Rotate counter-clockwise | Shift+← |
 | Flip horizontally | Shift+↑ |
+| Reset to original view | Shift+↓ |
 
 **Result**
 Pressing a shortcut immediately toggles the corresponding panel or display option, or — for the rotate/flip shortcuts — transforms the board view. Board transformations only change how the board is displayed; they do not alter the puzzle itself, and your move history remains valid afterward.
 
 **Notes**
-The rotate/flip shortcuts work both in play mode (View menu) and in the [Level Editor](editor.md#transformations). Flipping the board vertically is available from the View menu and the Level Editor, but currently has no assignable keyboard shortcut.
+The rotate/flip shortcuts work both in play mode (View menu) and in the [Level Editor](editor.md#transformations). Flipping the board vertically is available from the View menu and the Level Editor, but currently has no assignable keyboard shortcut. "Reset to original view" undoes any rotate/flip transformations and returns the board to its original orientation.
 
 **Related Features**
 [Customizing a shortcut](#customizing-a-shortcut), [Settings — Gameplay](settings.md#gameplay), [Menu: View](menus.md#view-menu)
