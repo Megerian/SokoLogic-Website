@@ -81,11 +81,11 @@ To generate successor states (pushes):
 3. Each valid `(box, dir)` pair is one **push move** and leads to a new state.
 
 Note:  
-It is common to measure cost in **pushes** (not player steps) and to count only pushes as edges in the search graph. :contentReference[oaicite:7]{index=7}
+It is common to measure cost in **pushes** (not player steps) and to count only pushes as edges in the search graph.
 
 ## Transposition table & hashing
 
-A **transposition table** (TT) stores states that have already been visited, to avoid re-searching them. :contentReference[oaicite:8]{index=8}
+A **transposition table** (TT) stores states that have already been visited, to avoid re-searching them.
 
 Implementation steps:
 

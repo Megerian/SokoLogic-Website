@@ -15,11 +15,14 @@ deploymentBranch: 'gh-pages',
 
 onBrokenLinks: 'throw',
 markdown: {
+mermaid: true,
 hooks: {
 onBrokenMarkdownLinks: 'warn',
 onBrokenMarkdownImages: 'warn',
 },
 },
+
+themes: ['@docusaurus/theme-mermaid'],
 
 favicon: '/img/favicon.png',
 

@@ -44,4 +44,36 @@ At a high level, a Sokoban solver:
 7. **Keeps track of visited states** in a transposition table to avoid duplicates.
 8. **Returns a sequence of pushes/moves** when a goal state is found.
 
+```mermaid
+flowchart TD
+    A["parse the level"] --> B["represent the state:\nbox positions + player position/area"]
+    B --> C["generate successors:\nplayer-reachable tiles -> possible pushes"]
+    C --> D{"seen this state\nbefore?\n(transposition table)"}
+    D -- yes --> C
+    D -- no --> E{"deadlock?"}
+    E -- yes --> C
+    E -- no --> F["score with a heuristic\n(distance to a solution)"]
+    F --> G["search algorithm picks\nthe next state to expand\n(A*, IDA*, ...)"]
+    G --> H{"every box on a goal?"}
+    H -- no --> C
+    H -- yes --> I["return the sequence\nof pushes/moves"]
+```
+
 In the following pages we will go through each of these parts in enough detail that you can build a working solver and then iteratively add more sophisticated techniques.
+
+## Going deeper: how SokoLogic actually implements this
+
+Everything above is deliberately generic - it applies to more or less any Sokoban solver. **SokoLogic's
+own solver, Socrates,** is a real, concrete implementation of these ideas (plus quite a few techniques
+beyond them: a portfolio of several concurrent search strategies, board-symmetry canonicalization, a
+learned deadlock-pattern database, Festival-style packing/parking plans). Its contributor documentation
+lives next to the code and goes into class names, source files and measured performance, which is more
+detail than fits a general guide like this one:
+
+**[→ Socrates developer documentation on GitHub](https://github.com/Megerian/SokoLogic/blob/master/docs/solver/README.md)**
+(leaves this site - it is source-adjacent documentation for people modifying the solver, not another
+page of this guide)
+
+Start with that document's own `concepts.md` if you want the vocabulary (corral, freeze deadlock,
+tunnel, gate position, ...) tied directly to SokoLogic's classes and illustrated with rendered board
+pictures, rather than the general description on this page.

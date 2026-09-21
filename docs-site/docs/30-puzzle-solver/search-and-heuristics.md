@@ -8,14 +8,14 @@ Once states and moves are defined, the solver needs a search algorithm and a way
 
 ## Search algorithms for Sokoban
 
-The state space of Sokoban is huge, so naive BFS/DFS usually fail except on trivial levels. :contentReference[oaicite:11]{index=11}
+The state space of Sokoban is huge, so naive BFS/DFS usually fail except on trivial levels.
 
 Common choices:
 
 ### Breadth-First Search (BFS)
 
 - Guarantees shortest solution in number of pushes.
-- Memory usage grows as `O(b^d)` and is usually prohibitive for non-toy levels. :contentReference[oaicite:12]{index=12}
+- Memory usage grows as `O(b^d)` and is usually prohibitive for non-toy levels.
 
 BFS is still useful for:
 - Player reachability
@@ -24,7 +24,7 @@ BFS is still useful for:
 ### Depth-First Search (DFS) and IDDFS
 
 Plain DFS is not complete in infinite graphs and has no optimality guarantee.  
-**Iterative Deepening DFS (IDDFS)** combines the space benefits of DFS with the completeness of BFS, but on Sokoban it still needs good heuristics and pruning to be competitive. :contentReference[oaicite:13]{index=13}
+**Iterative Deepening DFS (IDDFS)** combines the space benefits of DFS with the completeness of BFS, but on Sokoban it still needs good heuristics and pruning to be competitive.
 
 ### A\*
 
@@ -33,7 +33,7 @@ A\* is a best-first search that expands states in increasing order of `f(n) = g(
 - `g(n)` = cost so far (number of pushes from start)
 - `h(n)` = heuristic estimate of remaining pushes to a solution
 
-A\* is **optimal** if `h` is admissible (never overestimates). :contentReference[oaicite:14]{index=14}
+A\* is **optimal** if `h` is admissible (never overestimates).
 
 On Sokoban:
 
@@ -42,7 +42,7 @@ On Sokoban:
 
 ### IDA\*
 
-Rolling Stone uses **Iterative Deepening A\*** (IDA\*) as its main search algorithm. :contentReference[oaicite:16]{index=16}
+Rolling Stone uses **Iterative Deepening A\*** (IDA\*) as its main search algorithm.
 
 - Performs depth-first searches with an `f`-cost limit.
 - Increases the limit step by step.
@@ -73,9 +73,9 @@ This is cheap but often too optimistic and blind to obstacles and deadlocks.
 
 ### Minimum-cost matching (Hungarian algorithm)
 
-Rolling Stone improves the lower bound by solving a **minimum perfect bipartite matching** between boxes and goals, with edge cost = distance from box to goal. :contentReference[oaicite:18]{index=18}
+Rolling Stone improves the lower bound by solving a **minimum perfect bipartite matching** between boxes and goals, with edge cost = distance from box to goal.
 
-- Implemented with the Hungarian algorithm in `O(N^3)` time, where `N` is the number of boxes. :contentReference[oaicite:19]{index=19}
+- Implemented with the Hungarian algorithm in `O(N^3)` time, where `N` is the number of boxes.
 - Gives a much tighter lower bound than naive assignment.
 - Can sometimes even detect impossible states if some goals cannot be matched.
 
@@ -83,7 +83,7 @@ Rolling Stone improves the lower bound by solving a **minimum perfect bipartite 
 
 The matching lower bound can be augmented with small local penalties, e.g.:
 
-- **Linear conflicts:** two boxes in a corridor both “want” to move in the same direction and block each other. :contentReference[oaicite:20]{index=20}
+- **Linear conflicts:** two boxes in a corridor both “want” to move in the same direction and block each other.
 - Other structural penalties (boxes on wrong side of walls, etc.)
 
 These remain admissible if carefully designed.
@@ -96,9 +96,9 @@ Rolling Stone uses **inertia-based move ordering**:
 
 1. Prefer pushes that move the same box that was pushed last.
 2. Prefer pushes that reduce the heuristic value.
-3. Fall back to others, sorted by distance to their assigned goals. :contentReference[oaicite:21]{index=21}
+3. Fall back to others, sorted by distance to their assigned goals.
 
-This makes the search rapidly focus on promising sequences and becomes “almost perfect” after only a fraction of the solution depth. :contentReference[oaicite:22]{index=22}
+This makes the search rapidly focus on promising sequences and becomes “almost perfect” after only a fraction of the solution depth.
 
 ## Push-vs-move optimality
 

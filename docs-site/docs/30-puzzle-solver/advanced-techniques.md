@@ -22,7 +22,7 @@ A **tunnel** is a 1-wide corridor where a box cannot step aside. If a box enters
 Rolling Stone treats the entire sequence of pushes through a tunnel as a single **macro move**:
 
 - As soon as a box is pushed into a tunnel, the solver automatically pushes it along the tunnel until it reaches a branching point or a stopping condition.
-- All intermediate states are skipped from the search tree. :contentReference[oaicite:36]{index=36}
+- All intermediate states are skipped from the search tree.
 
 This can drastically reduce depth and branching.
 
@@ -31,13 +31,13 @@ This can drastically reduce depth and branching.
 Many levels have **goal rooms**: clusters of goals with one narrow entrance.
 
 - If a box is pushed into the entrance, it often makes sense to push it all the way to its final goal location, not stop in between.
-- Goal macros do exactly that: they replace a whole sequence of “obvious” pushes into a goal room by one macro push. :contentReference[oaicite:37]{index=37}
+- Goal macros do exactly that: they replace a whole sequence of “obvious” pushes into a goal room by one macro push.
 
 Later work introduced **goal-roam macros** that allow temporarily moving boxes off goals to make room for other boxes, while still avoiding deadlocks in the goal area.
 
 ## Pattern search and relevance cuts
 
-Junghanns’ PhD thesis introduces several general ideas for focusing single-agent search: :contentReference[oaicite:39]{index=39}
+Junghanns’ PhD thesis introduces several general ideas for focusing single-agent search:
 
 - **Pattern search**: searching over patterns (partial configurations) instead of full states.
 - **Relevance cuts**: pruning parts of the search tree that are deemed irrelevant for reaching the goal based on domain knowledge.
@@ -53,7 +53,7 @@ The Festival solver uses a novel algorithm called **Feature Space Search (FESS)*
 - FESS searches primarily in feature space, rewarding feature-level progress with more computation time in the underlying solver.
 - New domain-specific concepts such as **hotspots**, **sinks**, and **connectivity features** capture global properties that are hard to express with local heuristics alone.
 
-According to reported results, FESS is the first documented approach to solve all 90 XSokoban levels in just a few minutes on modern hardware. :contentReference[oaicite:41]{index=41}
+According to reported results, FESS is the first documented approach to solve all 90 XSokoban levels in just a few minutes on modern hardware.
 
 ## Modern improvements and learning-based methods
 
