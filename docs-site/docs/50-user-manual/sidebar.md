@@ -5,171 +5,159 @@ sidebar_position: 3
 
 # Sidebar Panels
 
-The left sidebar contains three tabbed panels for managing solutions, board snapshots, and custom move macros. You can toggle the sidebar visibility using the toolbar buttons or keyboard shortcuts.
+The sidebar on the left of the board holds three lists for the current puzzle: your saved **Solutions**, your **Snapshots** (saved positions), and the **Macros** you can run on the board.
 
 ![Screenshot](...)
 
 ## Overview
 
-**Purpose:** Access saved solutions, board positions, and move macros for the current puzzle.
+**Purpose:** Keep solutions, snapshots, and macros for the current puzzle next to the board.
 
 **Prerequisites:** A puzzle is loaded.
 
 **Usage**
-- Click one of the three tab buttons at the top of the sidebar to switch between Solutions, Snapshots, and Macros.
-- Each panel is a scrollable list; click an item to activate it.
-- Right-click an item for additional options (copy, delete, edit notes, etc.).
-- Click the **X** (or press the corresponding toolbar button again) to hide the sidebar and give the board more space.
+- Show the sidebar with the **Solutions**, **Snapshots**, or **Macros** button in the toolbar, or with <kbd>S</kbd>, <kbd>D</kbd>, or <kbd>M</kbd>. Pressing the button or key of the tab that is already showing hides the sidebar again.
+- Switch lists with the tab bar at the top of the sidebar.
+- Right-click the **Solutions** or **Snapshots** tab — or the empty area below the list — to open that list's view options (see [List View Options](#list-view-options)).
 
-**Result:** The selected panel displays its contents; clicking an item activates it (loads a solution, jumps to a snapshot, or plays a macro).
+**Result:** The selected list is shown next to the board.
 
 **Notes:**
-- Only one panel is visible at a time.
-- The sidebar's visibility state is remembered across sessions.
-- You can resize the sidebar by dragging its right edge.
+- Only one list is shown at a time.
+- Moving the mouse over an entry shows a hint in the status bar, e.g. "Double-click to set as new move history · Right-click for options".
 
 **Related Features**
-- [Main Window > Sidebar Toggles](main-window.md#sidebar-toggles) — toolbar buttons for sidebar control
-- [Settings: Sidebar](settings.md#sidebar) — configure sidebar appearance and default visibility
-- [Keyboard Shortcuts](keyboard-shortcuts.md) — keybindings to toggle individual panels
+- [Main Window > Sidebar Toggles](main-window.md#sidebar-toggles)
+- [Settings: Sidebar](settings.md#sidebar) — text size, sorting, filters, and badges
+- [Keyboard Shortcuts](keyboard-shortcuts.md) — change the toggle keys
 
 ---
 
 ## Solutions Panel
 
-**Purpose:** Browse, load, and manage saved solutions for the current puzzle.
+**Purpose:** Browse, load, and manage the saved solutions of the current puzzle.
 
-**Prerequisites:** The puzzle must have at least one saved solution.
+**Prerequisites:** A puzzle is loaded. Without solutions, the list shows "No solutions".
 
 **Usage**
 
-Each solution in the list shows:
-- **Solution type badge** — single character indicating the best metric(s):
-  - **P** — Best known push count (fewest pushes)
-  - **M** — Best known move count (fewest moves)
-  - **!** — Best overall (fewest pushes **and** fewest moves)
-- **Metrics** — the solution's move and push counts (e.g., "123 moves / 45 pushes" or abbreviated as "123/45")
-- **Title** (optional) — if the solution has a custom name, shown on hover or in an expanded view
-- **Notes** (optional) — additional comments you added to the solution
+Each entry shows the solution's metrics (all metrics, or just moves/pushes, depending on [Settings: Sidebar](settings.md#sidebar)) and, for record holders, a badge: by default **M** for the fewest moves, **P** for the fewest pushes, and **!** when one solution holds both records. A solution's title appears as a tooltip, or as a second line below the entry if you switched that on.
 
-Click a solution to load it into your active move history. The board jumps to the solution's starting position (usually the puzzle's initial state) and replays it.
+- **Click** — select an entry. <kbd>Ctrl</kbd>+click adds or removes entries from the selection; <kbd>Shift</kbd>+click selects a range (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+click adds the range to the selection).
+- **Double-click** — take the solution as your new move history. The board stays at the start position with the solution's moves ready to redo.
+- **Right-click** — open the context menu:
+  - **Take as new history** — same as double-clicking
+  - **Rename** — edit the title directly in the list; press <kbd>Enter</kbd> or click the check mark to keep it, <kbd>Esc</kbd> or the cross to cancel
+  - **Copy solution to clipboard**
+  - **Export as animation...** — see [Export Move Animation](export.md#export-move-animation)
+  - **Delete solution**
 
-**Right-click actions:**
-- **Copy to clipboard** — export the solution as LURD text
-- **Set as move history** — load this solution without animation
-- **Rename** — edit the solution's title or notes
-- **Delete** — remove the solution from the puzzle's collection
-- **Export to clipboard with metadata** — copy the solution with title and notes
-
-**Result:** The selected solution becomes your active move history; you can undo/redo or modify it.
+**Result:** The chosen action is applied immediately.
 
 **Notes:**
-- Solutions are saved automatically when you reach the puzzle's win condition (all boxes on goals).
-- You can manually save your current move sequence via [Menu: Moves > Copy to Clipboard](menus.md#moves-menu), then import it on a different puzzle using [Menu: Moves > Paste from Clipboard](menus.md#moves-menu).
-- Multiple solutions for the same puzzle can be stored; the app tracks the best by pushes and by moves separately.
-- Solutions are stored in the puzzle database; they persist across sessions.
-- A solution's "best" status is visual (the badge) but does not prevent you from loading slower solutions if you want to study them.
+- Solving a puzzle saves the solution automatically; the new entry is selected and scrolled into view. Solving it again with exactly the same moves selects the existing entry instead of adding a duplicate.
+- **Delete solution** moves the solution to the [Trash](history-and-trash.md#trash), where you can restore it. If several solutions are selected, all of them are deleted.
+- When the list is filtered to the best solutions, a **Show all solutions again (N hidden)** button below the list reveals the rest.
+- With best solutions pinned to the top or bottom, a line separates them from the others.
 
 **Related Features**
-- [Menu: Moves > Copy to Clipboard](menus.md#moves-menu) — save your current solution
-- [Menu: Moves > Paste from Clipboard](menus.md#moves-menu) — load a solution from text
-- [Settings: Sidebar](settings.md#sidebar) — configure solution display format (all metrics vs. moves/pushes only)
+- [List View Options](#list-view-options)
+- [Settings: Sidebar](settings.md#sidebar)
+- [Menu: Moves](menus.md#moves-menu) — copy and paste moves
 
 ---
 
 ## Snapshots Panel
 
-**Purpose:** Save and restore board positions from your play session.
+**Purpose:** Save positions you may want to come back to, and restore them later.
 
-**Prerequisites:** You have taken at least one snapshot.
+**Prerequisites:** A puzzle is loaded. Without snapshots, the list shows "No snapshots" with an **Add new snapshot** button.
 
 **Usage**
+- **Add new snapshot** (the **+** button above the list) — save your current move history as a snapshot.
+- **Hover over a snapshot** — the board shows a live preview of that position until you move the mouse away.
+- **Click**, <kbd>Ctrl</kbd>+click, <kbd>Shift</kbd>+click — select entries, as in the Solutions panel.
+- **Double-click** — take the snapshot as your new move history.
+- **Right-click** — **Take as new history**, **Rename**, **Copy snapshot to clipboard**, **Delete snapshot**.
 
-Each snapshot shows:
-- **Move count** — how many moves in you were when the snapshot was taken
-- **Push count** — how many pushes at that point
-- **Notes** (optional) — a comment you added to the snapshot
-- **Play-direction badge** (optional) — a single character marking whether the snapshot was recorded playing forward (pushing boxes) or in [reverse play](main-window.md#reverse-play-pull-boxes) (pulling boxes); configured in [Settings: Sidebar](settings.md#sidebar)
+Each entry shows its moves and pushes, optionally its title as a second line, and a badge for its play direction: by default nothing for forward play and **R** for [reverse play](main-window.md#reverse-play-pull-boxes). Hover over the badge to see which it is.
 
-**Actions:**
-- **Click a snapshot** — jump to that exact board state and move count. Your full move history is preserved; you can undo/redo from that position.
-- **Click the + button** — create a new snapshot at your current position (adds an entry to the list).
-- **Right-click a snapshot** — options include:
-  - Edit notes (add or update a comment)
-  - Delete the snapshot
-  - Jump to it (same as clicking)
-
-**Result:** The board state jumps to the snapshot position; move history is preserved.
+**Result:** The board jumps to the snapshot's position, with the moves after it still available for redo.
 
 **Notes:**
-- Snapshots are **per-session only** — they are lost when you load a different puzzle or close the app.
-- They are useful for exploring multiple solution strategies without restarting from scratch.
-- Unlike solutions, snapshots are not saved to the database; they're a temporary analysis tool.
-- You can have many snapshots; the list scrolls if it exceeds the sidebar height.
-- A snapshot recorded in the other play direction than the one you're currently in shows no live hover preview; double-click it to load it (which switches your play direction to match) or right-click for options.
+- Snapshots are saved in the database and stay available when you come back to the puzzle later.
+- A snapshot keeps your undone moves too, so after loading it you can still redo them.
+- If the current moves already solve the puzzle, no snapshot is added ("Move history contains a solution.") — the solution is saved in the Solutions panel instead. Adding the same position twice shows "Duplicate snapshot already exists."
+- A snapshot recorded in the other play direction shows no live preview; double-click it to load it, which also switches your play direction.
+- **Delete snapshot** moves it to the [Trash](history-and-trash.md#trash); with several entries selected, all of them are deleted.
 
 **Related Features**
-- [Settings: Sidebar](settings.md#sidebar) — configure snapshot list appearance
-- [Solutions Panel](#solutions-panel) — for persistent, saved solutions
-- [Menu: Moves > Undo/Redo](menus.md#moves-menu) — step through moves without snapshots
-- [Reverse Play](main-window.md#reverse-play-pull-boxes) — playing a puzzle backward, which snapshots can be tagged with
+- [List View Options](#list-view-options)
+- [Settings: Sidebar](settings.md#sidebar) — badge characters, sorting
+- [Reverse Play](main-window.md#reverse-play-pull-boxes)
 
 ---
 
 ## Macros Panel
 
-**Purpose:** Display and play custom move sequences (macros) for the current puzzle.
+**Purpose:** Run macros on the board, and record new ones from your own moves.
 
-**Prerequisites:** Macros must be defined for the puzzle (see [Macro Studio](macro-studio.md)).
+**Prerequisites:** A puzzle is loaded. The list shows all global macros plus the macros bound to the current puzzle; if there are none, it shows "No macros available for this puzzle." with an **Open Macro Studio** button.
 
 **Usage**
+- **Record** (red dot above the list) — start recording; play some moves, then click the button again (**Recording…**, stop icon) to save them as a new macro bound to this puzzle.
+- **Open Macro Studio** (pencil above the list) — open the [Macro Studio](macro-studio.md).
+- **Click a macro**, or its play button — run it on the board from the current position.
+- The pencil next to a macro renames it in place.
+- **Right-click a macro**, or click its **⋮** button, for more:
+  - **Execute**
+  - **Macro Name** — rename it
+  - **Copy Script** — copy the macro's script to the clipboard
+  - **Duplicate** — add a copy named "… (Copy)"
+  - **Bind to current puzzle** / **Global** — switch whether the macro appears for this puzzle only or for all puzzles
+  - **Open Macro Studio**
+  - **Delete Macro**
 
-Each macro shows:
-- **Macro name** — the custom label you gave it when creating it
-- **Description** (optional) — what the macro does
+Each entry shows the macro's name and whether it is **Global** or **Puzzle-bound**.
 
-**Actions:**
-- **Click a macro** — start playing it from the current board position. The moves in the macro are executed in sequence.
-- **Right-click a macro** — options include:
-  - Edit (open the macro in Macro Studio)
-  - Delete the macro
-  - Duplicate it
-  - View/edit notes or description
-
-**Result:** The macro's moves are applied to the board; animations play (if enabled).
+**Result:** The macro's moves are played on the board at your normal move animation speed.
 
 **Notes:**
-- Macros are **puzzle-specific** — each puzzle can have its own set of macros.
-- Macros can include complex logic:
-  - Loops (e.g., "push this box 5 times")
-  - Conditionals (e.g., "if player is here, do this")
-  - Comments and documentation
-- A macro fails gracefully if you play it from a position where its moves are invalid (e.g., trying to move the player into a wall).
-- Macros are stored in the puzzle database and persist across sessions.
+- If you undo moves while recording, the recording is discarded ("Recording discarded: moves were undone during recording").
+- Switching to another puzzle stops a running macro and ends a recording.
+- **Delete Macro** moves the macro to the [Trash](history-and-trash.md#trash).
 
 **Related Features**
-- [Macro Studio](macro-studio.md) — create and edit macros with detailed scripting
-- [Keyboard Shortcuts](keyboard-shortcuts.md) — macro-related keybindings
-- [Settings: Sidebar](settings.md#sidebar) — configure macro list appearance
+- [Macro Studio](macro-studio.md) — write and test macros
 
 ---
 
-## Keyboard Shortcuts for Sidebar
+## List View Options
 
-| Action | Default Shortcut | Description |
-|--------|----------|-------------|
-| Toggle Solutions panel | <kbd>S</kbd> | Show/hide the Solutions tab |
-| Toggle Snapshots panel | <kbd>D</kbd> | Show/hide the Snapshots tab |
-| Toggle Macros panel | <kbd>M</kbd> | Show/hide the Macros tab |
+**Purpose:** Change how the Solutions and Snapshots lists are sorted and filtered without opening the settings.
 
-You can customize these shortcuts in [Settings > Controls](keyboard-shortcuts.md#customizing-a-shortcut).
+**Prerequisites:** The sidebar is shown.
+
+**Usage**
+
+Right-click the **Solutions** or **Snapshots** tab, or the empty area below the list:
+
+- **Solutions:** **Sort by moves, then pushes** / **Sort by pushes, then moves** / **Sort by date**, **Ascending** / **Descending**, **Show best solutions on top** / **Show best solutions on bottom** / **Do not pin best solutions**, **Show all solutions** / **Show only best solutions** / **Show only best N solutions**, and **Show titles below each solution**.
+- **Snapshots:** the same sort options and direction, and **Show titles below each snapshot**.
+
+**Result:** The list updates immediately.
+
+**Notes:** These are the same options as in [Settings: Sidebar](settings.md#sidebar); changing them in either place changes both.
+
+**Related Features**
+- [Settings: Sidebar](settings.md#sidebar)
 
 ---
 
 ## Related Features
 
-- [Main Window](main-window.md) — toolbar and sidebar control buttons
+- [Main Window](main-window.md) — toolbar and sidebar toggle buttons
 - [Settings: Sidebar](settings.md#sidebar) — appearance and behavior configuration
 - [Keyboard Shortcuts](keyboard-shortcuts.md) — complete keybinding reference
-- [Menu: Moves](menus.md#moves-menu) — copy/paste and manage solutions from the menu
+- [Last Played History & Trash](history-and-trash.md) — restore deleted solutions, snapshots, and macros
 - [Macro Studio](macro-studio.md) — detailed macro creation and editing

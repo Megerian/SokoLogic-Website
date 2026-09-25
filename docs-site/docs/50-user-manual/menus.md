@@ -19,14 +19,16 @@ The menu bar at the top of the window provides access to all major features and 
 
 | Item | Shortcut | Action |
 |------|----------|--------|
-| **Import from disk…** | <kbd>Ctrl</kbd>+<kbd>I</kbd> | Browse for a Sokoban puzzle file (`.sok`, `.slc`, etc.) and load it into the app. |
+| **Import from disk…** | <kbd>Ctrl</kbd>+<kbd>I</kbd> | Browse for a Sokoban puzzle file (e.g. a `.sok` file) and load it into the app. |
 | **Import from clipboard** | <kbd>Ctrl</kbd>+<kbd>V</kbd> | Import puzzle(s) or solution(s) from text copied to your clipboard. |
 | **Create puzzle from LURD…** | — | Open a dialog to paste a LURD string and create a puzzle from it. |
-| **Save Single Puzzle** submenu | — | Export the current puzzle in various formats. |
-| — Export to clipboard | <kbd>Ctrl</kbd>+<kbd>C</kbd> | Copy the current puzzle as text to clipboard. |
-| — Export with transformations | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> | Copy the puzzle with current rotations/flips applied. |
-| — Export to disk… | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> | Save the puzzle to a file. |
-| — Export board as PNG… | — | Save a screenshot of the board as an image file. |
+| **Export** submenu | — | Export the current puzzle, the collection, or an image of the board. |
+| — Export… | — | Open the [Export dialog](export.md#export-dialog) to save the current puzzle or a range of the collection as a `.sok` file, with the solutions and snapshots you choose. |
+| — Export puzzle to clipboard | <kbd>Ctrl</kbd>+<kbd>C</kbd> | Copy the current puzzle as text to the clipboard. |
+| — Export puzzle to clipboard with transformations | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> | Copy the puzzle with the current rotations/flips applied. |
+| — Export whole collection to disk… | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> | Save the whole loaded collection to a file. |
+| — Export board as PNG… | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd> | Save an image of the board as a PNG file. |
+| — Copy board as PNG to clipboard | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd> | Copy an image of the board to the clipboard. |
 | **Go to puzzle…** | <kbd>Ctrl</kbd>+<kbd>G</kbd> | Jump to a specific puzzle by number in the loaded collection. |
 | **Previous puzzle** | <kbd>Page Up</kbd> | Load the previous puzzle in the collection. |
 | **Next puzzle** | <kbd>Page Down</kbd> | Load the next puzzle in the collection. |
@@ -38,7 +40,7 @@ The menu bar at the top of the window provides access to all major features and 
 
 **Notes:**
 - Importing a collection from disk replaces the current one.
-- Exporting allows you to share puzzles with others or back them up.
+- Exporting allows you to share puzzles with others or back them up — see [Exporting Puzzles & Animations](export.md).
 - "Unsolved" means you haven't reached the win condition yet (boxes not on all goals).
 
 **Related Features**
@@ -124,7 +126,7 @@ Each time you switch sides, the side you arrive at takes the box positions you j
 | **Rotate counter-clockwise** | <kbd>Shift</kbd>+<kbd>←</kbd> | Rotate 90° counter-clockwise. |
 | **Flip horizontally** | <kbd>Shift</kbd>+<kbd>↑</kbd> | Mirror the board left-to-right. |
 | **Flip vertically** | *(unassigned)* | Mirror the board top-to-bottom. |
-| **Reset to original view** | — | Undo all rotations and flips. |
+| **Reset to original view** | <kbd>Shift</kbd>+<kbd>↓</kbd> | Undo all rotations and flips. |
 
 Transformations do **not** change the puzzle itself — only how it's displayed. Your move history remains valid after rotating.
 
@@ -135,7 +137,7 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 | **Show walls** | <kbd>W</kbd> | Toggle outer wall tiles around the active board area. |
 | **Show board coordinates** | <kbd>F12</kbd> | Display tile coordinates (X, Y) when you hover the mouse over the board. |
 | **Show parity grid** | <kbd>P</kbd> | Overlay a checkerboard tint on alternating tiles (useful for visualizing which tiles are "even" vs. "odd" in coordinate parity). |
-| **Box pathfinding priority** | <kbd>B</kbd> | Toggle between "Fewest Pushes" and "Fewest Moves" — changes how the auto-walk target is computed when you right-click a box. |
+| **Box pathfinding priority** | <kbd>B</kbd> | Toggle between **Pushes Path** and **Moves Path** — decides whether pushing a box to a tile you choose (click or drag, or a marked push target) uses the route with the fewest pushes or the fewest moves. See [Box Pathfinding Priority Toggle](main-window.md#box-pathfinding-priority-toggle). |
 
 **Result:** Board display updates immediately; no effect on puzzle state or solutions.
 
@@ -146,7 +148,7 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 
 **Related Features**
 - [Main Window > Box Pathfinding Priority Toggle](main-window.md#box-pathfinding-priority-toggle) — toolbar button for the same toggle
-- [Settings: Appearance](settings.md#appearance) — configure board colors, background, and grid lines
+- [Settings: Look & Feel](settings.md#appearance) — configure board colors, background, and grid lines
 - [Settings: Skins](settings.md#skins) — change tile graphics and animation styles
 
 ---
@@ -163,14 +165,14 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 |------|----------|--------|
 | **Optimizer** | <kbd>F5</kbd> | Open the optimizer tool to improve your current solution (fewer moves or pushes). |
 | **Solver** | <kbd>F6</kbd> | Open the solver to find an automatic solution if you're stuck. |
-| **LetsLogic** | *(unassigned)* | Open the LetsLogic panel to browse online puzzle databases and submit solutions. |
+| **LetsLogic** | *(unassigned)* | Open the [LetsLogic Submission](letslogic.md) window to upload your best solutions to LetsLogic.com. |
 | **Puzzle Browser** | <kbd>F7</kbd> | Open an interactive search and filter tool for the loaded puzzle collection. |
 | **Editor** | <kbd>F8</kbd> | Switch to level design mode to create or modify puzzles. |
 | **Macro Studio** | <kbd>F9</kbd> | Open the macro editor to write and save custom move sequences. |
 | **Image to Puzzle** | <kbd>F10</kbd> | Convert a screenshot or image into a puzzle level. |
 | **Trash** | <kbd>F11</kbd> | View deleted puzzles and solutions; restore or permanently erase them. |
 | **Last Played** | *(unassigned)* | Browse your play history — puzzles you've attempted recently. |
-| **Export move history to APNG** | *(unassigned)* | Save your move sequence as an animated PNG file (useful for sharing solutions visually). |
+| **Export move history to APNG** | *(unassigned)* | Save your moves as an animated PNG file (useful for sharing solutions visually) — see [Export Move Animation](export.md#export-move-animation). |
 
 **Result:** The selected tool opens in a new window or panel.
 
@@ -198,7 +200,7 @@ Transformations do **not** change the puzzle itself — only how it's displayed.
 - Click **Settings…** to open the settings window.
 - Keyboard shortcut: **Ctrl+,** (Ctrl + comma)
 
-**Result:** The settings window opens, showing all categories (General, Skins, Appearance, Animations, Sound, Gameplay, Sidebar, Keybindings, LetsLogic).
+**Result:** The settings window opens, showing all categories (General, Window Title, Skins, Look & Feel, Animations, Sound, Gameplay, Sidebar, Controls, LetsLogic).
 
 **Notes:**
 - Settings are saved automatically when you change them.

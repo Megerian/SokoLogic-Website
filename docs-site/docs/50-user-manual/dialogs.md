@@ -5,163 +5,124 @@ sidebar_position: 5
 
 # Dialogs & Input Fields
 
-Various dialogs and input fields guide you through specific tasks like jumping to a puzzle, selecting options, or entering numeric values.
+Small dialogs help you with quick tasks: jumping to a puzzle, a move, or a push, copying part of your moves, and looking up the program version. The larger export dialogs have their own page, [Exporting Puzzles & Animations](export.md).
 
 ![Screenshot](...)
 
 ## About Dialog
 
-**Purpose:** Display application version, copyright, and license information.
+**Purpose:** Shows the program version, copyright, and license.
 
 **Prerequisites:** None — always available.
 
 **Usage**
-- Open via **Menu > Help > About SokoLogic**.
-- The dialog shows:
-  - Application name and version number
-  - Copyright notice (© 2026 Matthias Meger, Germany)
-  - License information (GNU General Public License v3)
-  - A clickable link to the official SokoLogic GitHub repository
+- Open it from the Help menu with **About SokoLogic**.
+- It shows the program name, "Version …", the copyright notice, the license (GNU General Public License v3), and a link to the SokoLogic website on GitHub.
+- Click the link to open the website in your browser.
+- Click **Okay**, or press <kbd>Enter</kbd> or <kbd>Esc</kbd>, to close the dialog.
 
-- Click the **OK** button or press **Escape** or **Enter** to close the dialog.
-- Click the website link to open it in your default browser.
+**Result:** The dialog closes; nothing else changes.
 
-**Result:** Information is displayed; clicking OK dismisses the dialog.
-
-**Notes:**
-- The version number helps you verify that you have the latest release.
-- The GPLv3 license means SokoLogic is free software and distributable.
+**Notes:** None.
 
 **Related Features**
-- [Menu: Help](menus.md#help-menu) — where to access this dialog
+- [Menu: Help](menus.md#help-menu)
 
 ---
 
 ## Go to Puzzle Dialog
 
-**Purpose:** Jump to a specific puzzle by number without using the Puzzle Browser.
+**Purpose:** Jump to a puzzle of the loaded collection by its number.
 
 **Prerequisites:** A puzzle collection is loaded.
 
 **Usage**
-- Open via **Menu > Collection > Go to Puzzle…** or press <kbd>Ctrl</kbd>+<kbd>G</kbd>.
-- The dialog prompts you to enter a puzzle number (e.g., `1`, `42`, `999`).
-- Type the number and press **Enter** or click **Go**.
-- The dialog validates the input:
-  - Must be a number between 1 and the total count of puzzles in the collection.
-  - The **Go** button is grayed out if the number is invalid.
+- Open it with **Go to puzzle…** in the Collection menu, or press <kbd>Ctrl</kbd>+<kbd>G</kbd>.
+- The field (**Puzzle number (1-N)**) starts with the current puzzle's number, already selected, so you can simply type over it. Only digits can be entered.
+- Press <kbd>Enter</kbd> or click **Go** to jump; press <kbd>Esc</kbd> or click **Cancel** to close without changing the puzzle.
 
-**Result:** The specified puzzle loads immediately; the dialog closes.
+**Result:** The chosen puzzle opens and the dialog closes.
 
-**Notes:**
-- Puzzle numbers are the IDs assigned by the collection, not arbitrary.
-- If you enter an out-of-range number, the dialog warns you and does not proceed.
-- Press **Escape** to cancel without changing puzzles.
+**Notes:** **Go** stays disabled while the number is outside the range shown in the field label.
 
 **Related Features**
-- [Puzzle Browser](puzzle-browser.md) — interactive alternative for finding puzzles
-- [Menu: Collection](menus.md#collection-menu) — navigate puzzles via next/previous
-- [Keyboard Shortcuts](keyboard-shortcuts.md) — customize the Go to Puzzle keybinding
+- [Puzzle Browser](puzzle-browser.md) — search and filter puzzles
+- [Main Window > Puzzle Navigation](main-window.md#puzzle-navigation) — previous/next buttons
+- [Keyboard Shortcuts](keyboard-shortcuts.md) — change the Go to puzzle shortcut
 
 ---
 
 ## Jump to Move / Jump to Push Dialogs
 
-**Purpose:** Skip to a specific move or push in your move history without replaying everything.
+**Purpose:** Go straight to a particular move or push in your move history.
 
-**Prerequisites:** You have made at least one move in the current puzzle.
+**Prerequisites:** A puzzle is loaded.
 
 **Usage**
 
 ### Jump to Move
-- Open via **Menu > Moves > Jump to move…**
-- Enter the move number (1 = first move, 2 = second move, etc.)
-- Press **Enter** or click **Jump**
-- The board state updates to that move position; your full move history is preserved
+- Open it with **Jump to move…** in the Moves menu, or click the move indicator ("Move: 12/47") in the [status bar](main-window.md#status-bar-bottom-bar).
+- Enter a number between 0 and the total number of moves in your history (**Move number (0-N)**); the field starts with your current move number.
+- Press <kbd>Enter</kbd> or click **Go**.
 
 ### Jump to Push
-- Open via **Menu > Moves > Jump to push…**
-- Enter the push number (1 = first box push, 2 = second push, etc.)
-- Press **Enter** or click **Jump**
-- The board state updates to that push position
+- Open it with **Jump to push…** in the Moves menu.
+- Enter a number between 0 and the total number of pushes (**Push number (0-N)**); the field starts with your current push count.
+- Press <kbd>Enter</kbd> or click **Go**.
 
-**Result:** The board jumps to the specified move/push; animations play (if enabled).
+**Result:** The board jumps to the chosen position in your move history. Moves after it remain available for redo.
 
 **Notes:**
-- Move counting includes all player steps (even those that don't push a box).
-- Push counting only counts actual box pushes.
-- You can undo from the jumped-to position and make a different sequence of moves.
-- Invalid numbers (out of range) prevent jumping; the **Jump** button is disabled.
+- The range includes moves you have undone, so you can also jump forward.
+- 0 takes you back to the start position.
+- **Go** stays disabled while the number is out of range; <kbd>Esc</kbd> or **Cancel** closes the dialog.
 
 **Related Features**
-- [Menu: Moves](menus.md#moves-menu) — other move-related options
-- [Main Window > History Controls](main-window.md#history-controls) — undo/redo buttons
-- [Settings: Gameplay](settings.md#gameplay) — configure undo behavior
+- [Main Window > History Controls](main-window.md#history-controls)
+- [Menu: Moves](menus.md#moves-menu)
 
 ---
 
-## Numeric Input Dialogs (Animation Delay, Copy Moves Range, etc.)
+## Copy Moves Range Dialogs
 
-**Purpose:** Enter numeric parameters for various settings and operations.
+**Purpose:** Copy only part of your moves to the clipboard, as LURD text.
 
-**Prerequisites:** Depends on the specific dialog (see below).
+**Prerequisites:** A puzzle is loaded and you have made moves.
 
-**Types of Input Dialogs**
+**Usage**
 
-### Animation Delay Input
-- **Accessed from:** [Settings > Animations](settings.md#animations) or [Menu > Settings > Animations](menus.md#settings-menu)
-- **Purpose:** Set the speed of move animations (lower = faster)
-- **Input range:** 0–5000 milliseconds (default: usually around 200 ms)
-- **Result:** Animations play at the specified speed; setting is saved immediately
+### Copy moves range to clipboard…
+- Open it from the Moves menu (default shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>). The dialog is titled "Enter move range to copy".
+- Enter a **Start move** (starts at 1) and an **End move** (starts at the total number of moves).
+- Press <kbd>Enter</kbd> in the first field to move to the second; <kbd>Enter</kbd> in the second field (or clicking **Copy**) copies the moves.
 
-### Undo/Redo Animation Delay Input
-- **Accessed from:** [Settings > Animations](settings.md#animations) or the toolbar
-- **Purpose:** Set animation speed when undoing/redoing moves (separate from forward move animation speed)
-- **Input range:** 0–5000 milliseconds
-- **Result:** Undo/redo sequences animate at the specified speed
+### Copy moves of push range to clipboard…
+- Open it from the Moves menu. The dialog is titled "Select push range for copying moves".
+- Enter a **Start push** and an **End push**; all moves from right after the push before the start push up to and including the end push are copied.
+- Confirm with <kbd>Enter</kbd> or **Copy**.
 
-### Copy Moves Range Dialog
-- **Accessed from:** [Menu > Moves > Copy moves range to clipboard…](menus.md#moves-menu)
-- **Purpose:** Copy only a specific range of moves (e.g., moves 5–15)
-- **Input:** Two fields — start move number and end move number
-- **Result:** Only the specified moves are copied to clipboard as LURD text
-
-### Copy Moves of Pushes Range Dialog
-- **Accessed from:** [Menu > Moves > Copy moves of pushes range to clipboard…](menus.md#moves-menu)
-- **Purpose:** Copy moves that occurred during a specific range of pushes (e.g., pushes 3–7)
-- **Input:** Two fields — start push number and end push number
-- **Result:** Only moves from those pushes are copied to clipboard
-
-## Usage Pattern for All Numeric Input Dialogs
-
-1. **Focus** — the input field is pre-focused when the dialog opens; you can type immediately
-2. **Validation** — the dialog validates your input and disables the **OK** / **Confirm** button if invalid
-3. **Keyboard shortcuts:**
-   - **Enter** — confirm and apply the input
-   - **Escape** — cancel without applying changes
-4. **Mouse** — click **OK** or **Confirm** to apply, or **Cancel** to dismiss
+**Result:** The moves are copied to the clipboard and a notification confirms it.
 
 **Notes:**
-- Numeric fields typically accept only digits (0–9).
-- Out-of-range values are rejected silently (the confirm button stays disabled).
-- Settings applied via these dialogs save automatically and persist across sessions.
+- If a field is empty or the numbers don't fit, a message appears below the field when you try to copy: "Input required.", "Start move number must be 1 or higher.", or "End move number must not be lower than start move number." (the same with "push" in the push dialog).
+- The range refers to your whole move history, including moves you have undone. An end number beyond the last move copies up to the last move.
+- <kbd>Esc</kbd> or **Cancel** closes the dialog without copying.
 
 **Related Features**
-- [Settings](settings.md) — configure all these parameters persistently
-- [Menu: Moves](menus.md#moves-menu) — access copy-range operations
-- [Settings: Gameplay](settings.md#gameplay) — animation and move-related settings
+- [Menu: Moves](menus.md#moves-menu) — copy and paste moves
+- [Keyboard Shortcuts](keyboard-shortcuts.md#default-shortcuts--moves)
 
 ---
 
 ## Notes on Dialog Behavior
 
-- **Keyboard-first:** All dialogs support keyboard shortcuts for navigation and confirmation; you don't need a mouse.
-- **Modal:** Dialogs block interaction with the main window until dismissed.
-- **Centering:** Dialogs open centered on the main window (or screen if the main window position isn't known).
-- **Dismissal:** Press **Escape**, click **Cancel**, or close the dialog window to dismiss without applying changes.
+- **Keyboard-first:** The number dialogs open with the input field focused, confirm with <kbd>Enter</kbd>, and close with <kbd>Esc</kbd>.
+- **Modal:** While a dialog is open, you cannot use the main window.
+- **One at a time:** A dialog does not open on top of another blocking dialog.
 
 ## Related Features
 
 - [Menu Bar](menus.md) — where most dialogs are triggered from
-- [Settings](settings.md) — persistent alternatives to one-time dialog inputs
+- [Exporting Puzzles & Animations](export.md) — the export dialogs, template editors, and the move animation export
+- [Settings](settings.md) — animation delays and other preferences
 - [Keyboard Shortcuts](keyboard-shortcuts.md) — keybindings for opening dialogs

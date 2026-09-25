@@ -205,6 +205,7 @@ The editor offers two positioning modes (toggled via the positioning button in t
 
 - The board keeps whatever position you give it; you use **Ctrl + arrow keys** to shift it around the workspace.
 - Useful for designing asymmetric levels or when you need to draw in a specific area.
+- A shift that would lose content — an item inside the walls pushed onto the surrounding wall, or the board growing beyond the maximum board size — is refused: the board simply doesn't move, so nothing is ever cut off.
 - The **+** and **−** buttons widen or narrow the blank space on **all four sides by one tile at a time**. Because every side changes by the same amount, the board keeps the off-center position you gave it, and pressing **+** and then **−** leaves the layout exactly as it was.
 
 **Switching modes:**
@@ -241,6 +242,7 @@ The editor offers two positioning modes (toggled via the positioning button in t
   - The current mouse position (if hovering), or
   - The top-left margin position (default).
 - After pasting, the pasted region is automatically selected (marquee mode).
+- A player pasted onto a goal keeps the goal underneath (the tile becomes "player on goal").
 
 ### Select All
 
@@ -253,7 +255,7 @@ The editor offers two positioning modes (toggled via the positioning button in t
 - Choose which tile type to fill with (wall, floor, box, goal).
 
 **Delete:**
-- Remove all content from selected tiles (clears boxes/goals but leaves floors).
+- Remove all content from selected tiles (clears boxes/goals but leaves floors). Press <kbd>Delete</kbd> or <kbd>Backspace</kbd>.
 
 **Replace:**
 - Within a selection, replace all occurrences of one tile type with another.
@@ -404,7 +406,7 @@ Click **Play**:
 | <kbd>Ctrl</kbd>+<kbd>X</kbd> | Cut selection |
 | <kbd>Ctrl</kbd>+<kbd>V</kbd> | Paste |
 | <kbd>Ctrl</kbd>+<kbd>A</kbd> | Select all |
-| <kbd>Delete</kbd> | Clear the selected tiles |
+| <kbd>Delete</kbd> / <kbd>Backspace</kbd> | Clear the selected tiles |
 | <kbd>Esc</kbd> | Cancel the drag or selection currently in progress |
 | <kbd>Ctrl</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd>/<kbd>←</kbd>/<kbd>→</kbd> | Shift board position (switches to free positioning if auto-center is on) |
 | <kbd>+</kbd> / <kbd>−</kbd> | Increase/decrease margin |

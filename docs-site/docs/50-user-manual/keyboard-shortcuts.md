@@ -126,6 +126,41 @@ Pressing a shortcut immediately opens the corresponding tool or dialog.
 **Related Features**
 [Customizing a shortcut](#customizing-a-shortcut)
 
+## Fixed keys and mouse gestures
+
+**Purpose**
+Reference for the keys and mouse gestures that are built in and cannot be reassigned under **Controls**.
+
+**Prerequisites**
+A puzzle is open in the main window.
+
+**Usage**
+| Action | Keys / gesture |
+|---|---|
+| Move the player | Arrow keys |
+| Step away without pulling (reverse play only) | Ctrl+Arrow key |
+| Store the current puzzle as bookmark 1–9 | Ctrl+1 … Ctrl+9 |
+| Open bookmarked puzzle 1–9 | 1 … 9 |
+| Zoom in / out | Ctrl++ / Ctrl+− |
+| Reset zoom to 100% and center the board | Ctrl+0 |
+| Zoom smoothly | Hold Z + mouse wheel |
+| Move the view (board larger than window) | Hold Z + drag, or drag with the middle mouse button |
+| Undo / redo one step | Mouse wheel over the board (down = undo, up = redo) |
+| Undo / redo a single move | Ctrl + mouse wheel |
+| Undo / redo 10 / 100 steps | Shift + mouse wheel / Ctrl+Shift + mouse wheel |
+| Undo / redo 1,000 / 10,000 steps | Alt + mouse wheel / Ctrl+Shift+Alt + mouse wheel |
+
+On macOS, use Cmd instead of Ctrl — except for Ctrl+Arrow key in reverse play, which uses the Control key.
+
+**Result**
+The action happens immediately, as described in the linked sections of the main window page.
+
+**Notes**
+These keys are not listed under **Controls** and cannot be changed there. The arrow keys (without Shift) always move the player, even if you assign them to another action. The digit keys 1–9 open bookmarks only as long as none of your own shortcuts uses them.
+
+**Related Features**
+[Moving the Player and Pushing Boxes](main-window.md#moving-the-player-and-pushing-boxes), [Puzzle Bookmarks](main-window.md#puzzle-bookmarks), [Zoom and Pan](main-window.md#zoom-and-pan), [Mouse Wheel Undo/Redo](main-window.md#mouse-wheel-undoredo)
+
 ## Mouse Bindings
 
 **Purpose**

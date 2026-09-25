@@ -5,135 +5,71 @@ sidebar_position: 6
 
 # Last Played History & Trash
 
-Two companion tools for managing your puzzle activity: the Last Played History browser shows which puzzles you've recently opened, and Trash lets you recover accidentally deleted items.
+Two companion windows: **Last Played** shows the puzzles you played recently, across all collections, and lets you reopen them with one click. **Trash** keeps deleted solutions, snapshots, and macros for a while so you can restore them.
 
 ![Screenshot](...)
 
 ## Last Played History Browser
 
-**Purpose:** Browse puzzles you've recently played, sorted by most-recent-first.
+**Purpose:** Reopen a puzzle you played recently, even from another collection.
 
-**Prerequisites:** You have played at least one puzzle in a loaded collection.
+**Prerequisites:** None. There is no default keyboard shortcut; you can assign one under [Customizing a shortcut](keyboard-shortcuts.md#customizing-a-shortcut).
 
 **Usage**
+- Open **Last Played** from the Tools menu.
+- The window shows your recently played puzzles as cards with a small board preview, newest first. The header shows the number of **Entries** and, if any, the number of **Missing files**.
+- **Search** — type into the field ("Search by title, collection, or #number…"). A plain search matches the puzzle title, author, collection title, or puzzle number; `#12` matches puzzle number 12 only.
+- **Click a card** — open that puzzle in the main window; the history window closes.
+- **Remove from history** (button on a card) — remove the entry. A notification ("Removed from history") offers **Undo**.
+- **Remove missing entries** — remove all entries whose file can no longer be loaded (shown only when there are some).
+- **Clear history** — remove all entries, after confirming ("Clear history?"). This cannot be undone.
+- Keyboard: <kbd>Page Up</kbd> / <kbd>Page Down</kbd> scroll one page (with <kbd>Ctrl</kbd>, ten pages), <kbd>Home</kbd> / <kbd>End</kbd> jump to the newest / oldest entry. <kbd>Esc</kbd> first clears the search, then leaves the search field, then closes the window.
 
-### Opening the Browser
-- Click **Menu > Tools > Last Played**. There is no default keyboard shortcut, but you can assign one — see [Customizing a shortcut](keyboard-shortcuts.md#customizing-a-shortcut).
-- The browser opens showing a grid of puzzle thumbnails in reverse chronological order (newest first).
-
-### Browsing & Searching
-- **Search field** (top) — type to filter by puzzle title or author name (case-insensitive substring match).
-- **Puzzle thumbnails** — each shows a small preview of the board and metadata:
-  - Puzzle number and title
-  - Last played date/time (e.g., "2026-08-09 15:34")
-  - Author name
-
-### Loading a Puzzle
-- **Click a puzzle tile** to load it into the main game window and close the browser.
-- The puzzle loads to its starting position; your full move history is preserved if you were already playing it.
-
-### Removing Entries
-- **Right-click a puzzle** for options to remove it from your history (does **not** delete the puzzle itself — only removes it from the history list).
-
-**Result:** The puzzle loads; the history browser closes (or the entry is removed).
+**Result:** The chosen puzzle opens, or the history changes as requested.
 
 **Notes:**
-- History is recorded across all puzzle collections you've loaded (not just the currently active collection).
-- The history persists across app sessions; it's stored in the database.
-- Removing a puzzle from history does not delete the puzzle from any collection.
-- If a puzzle file is deleted externally (from disk), it will still appear in history but will fail to load with an error message.
+- The history is kept between sessions and covers every collection you have played from.
+- Removing an entry never deletes the puzzle or its collection file.
+- An entry whose file was moved or deleted shows "File no longer found"; one whose puzzle number no longer exists in the file shows "Puzzle #N no longer exists in this collection"; a file that can't be read shows "Could not load this collection". Such entries can't be opened.
+- With no history yet, the window shows "No puzzles played yet".
 
-### Keyboard Navigation
-- **Arrow keys** — move focus between tiles
-- **Enter** — select the focused puzzle
-- **Page Up / Page Down** — scroll
-- **Home / End** — jump to newest/oldest
-- **Escape** — close without changing the active puzzle
+**Related Features**
+- [Main Window > Puzzle Bookmarks](main-window.md#puzzle-bookmarks) — jump to favorite puzzles with a single key
+- [Puzzle Browser](puzzle-browser.md) — search within collections
+- [Menu: Tools](menus.md#tools-menu)
 
 ---
 
 ## Trash
 
-**Purpose:** Recover or permanently delete puzzles, solutions, snapshots, and macros that you've deleted.
+**Purpose:** Restore solutions, snapshots, and macros you deleted, or delete them for good.
 
-**Prerequisites:** At least one item has been deleted from your collection.
+**Prerequisites:** None. Open it with **Trash** in the Tools menu, or press <kbd>F11</kbd>.
 
 **Usage**
+- The window has three tabs, each showing its item count: **Solutions (N)**, **Snapshots (N)**, and **Macros (N)**.
+- Each entry shows the item (its title, or its metrics if it has none; for macros, the name), the puzzle it belongs to, "Deleted on …", and how long it is kept ("Auto-deletes in N day(s)" or "Auto-deletes today").
+- **Restore** — put the item back where it came from. A notification confirms it, e.g. "Solution restored to "…"".
+- **Delete permanently** — erase the item after confirming ("Delete permanently?").
+- **Empty trash** (top of the window) — permanently delete everything in the trash — all three tabs — after confirming ("Empty trash?").
 
-### Opening Trash
-- Click **Menu > Tools > Trash**, or press <kbd>F11</kbd>.
-- The trash window opens showing three tabs: **Solutions**, **Snapshots**, and **Macros**.
+**Result:** Restored items reappear in the [sidebar](sidebar.md) of their puzzle (macros in the Macro Studio and the Macros panel). Permanently deleted items are gone for good.
 
-### Browsing Trash
-Each tab displays a list of deleted items with details:
-- **Item name/ID** — the solution's name or ID, snapshot position, or macro name
-- **Puzzle** — which puzzle the item belonged to
-- **Deleted at** — when it was deleted (date and time)
+**Notes:**
+- Deleted items are kept for 30 days. Older items are removed automatically when SokoLogic starts.
+- Items get into the trash when you delete them in the sidebar or in the Macro Studio; there is no confirmation when deleting, because you can always restore from here.
+- **Delete permanently** and **Empty trash** cannot be undone.
+- With nothing in a tab, it shows "Trash is empty".
 
-### Restoring Items
-- **Click an item** or select it and press **Restore** (button or right-click) to recover it and return it to the puzzle.
-- The restored item is placed back into the puzzle's collection as if it was never deleted.
-
-**Result:** The deleted item is restored to full functionality.
-
-### Permanently Deleting Items
-- **Right-click an item** and select **Delete permanently** (or select and press **Delete**).
-- A confirmation dialog appears — click **Confirm** to proceed (this cannot be undone).
-
-**Result:** The item is permanently erased from the trash; it cannot be recovered.
-
-### Clearing the Trash
-- **Clear all** button (top of the window) — removes all deleted items in the current tab from trash permanently.
-- A confirmation dialog appears — confirm to proceed.
-
-**Result:** All deleted items in the selected tab are permanently erased.
-
-**Notes**
-- **Trash is tab-specific** — clearing Solutions tab does not affect Snapshots or Macros; you must clear each tab separately (or one item at a time).
-- **Restore vs. Undo** — Trash is for recovering items deleted in past sessions. If you accidentally deleted something *just now*, use [Menu: Moves > Undo](menus.md#moves-menu) or the undo button in the toolbar instead.
-- **Date/time stamps** — show when the item was deleted, not when it was created; useful for identifying recent accidents.
-- **Deleted puzzle data** — if a puzzle is deleted and then restored, its solutions/snapshots/macros remain deleted unless you restore them individually from Trash.
-
-### Trash Tabs
-
-| Tab | Items | Restoration |
-|-----|-------|-------------|
-| **Solutions** | Deleted move sequences for solved puzzles | Restore to recover the solution |
-| **Snapshots** | Deleted board positions (savepoints) | Restore to recover the snapshot |
-| **Macros** | Deleted custom move macros | Restore to recover the macro |
-
----
-
-## Workflow Examples
-
-### Recovering a Deleted Solution
-1. Open **Menu > Tools > Trash**
-2. Click the **Solutions** tab
-3. Find the solution by puzzle name or deleted date
-4. Right-click and select **Restore** (or click **Restore** button if available)
-5. The solution is returned to the puzzle's Solutions panel and can be loaded again
-
-### Cleaning Up Old History
-1. Open **Menu > Tools > Last Played**
-2. Identify puzzles you no longer care about
-3. Right-click and select **Remove from history**
-4. The entry disappears; the puzzle itself remains in your collections
-5. (Optionally) close the browser
-
-### Permanently Deleting a Snapshot
-1. Open **Menu > Tools > Trash**
-2. Click the **Snapshots** tab
-3. Find the snapshot by puzzle or deleted date
-4. Right-click and select **Delete permanently** (or select and press **Delete**)
-5. Confirm in the dialog
-6. The snapshot is erased; it cannot be recovered
+**Related Features**
+- [Sidebar Panels](sidebar.md) — where solutions, snapshots, and macros are deleted and where restored ones appear
+- [Macro Studio](macro-studio.md)
+- [Menu: Tools](menus.md#tools-menu)
 
 ---
 
 ## Related Features
 
-- [Sidebar: Solutions Panel](sidebar.md#solutions-panel) — where restored solutions appear
-- [Sidebar: Snapshots Panel](sidebar.md#snapshots-panel) — where restored snapshots appear
-- [Sidebar: Macros Panel](sidebar.md#macros-panel) — where restored macros appear
+- [Sidebar Panels](sidebar.md) — solutions, snapshots, and macros
 - [Menu: Tools](menus.md#tools-menu) — quick access to Last Played and Trash
 - [Keyboard Shortcuts](keyboard-shortcuts.md) — customize keybindings for Last Played and Trash
